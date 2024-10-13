@@ -21,11 +21,11 @@
                           Foreground="{TemplateBinding Foreground}"
                           Content="{TemplateBinding Content}"
                           Padding="{TemplateBinding Padding}"
-                          TextBlock.FontWeight="SemiBold"
+                          FontWeight="SemiBold"
                           HorizontalContentAlignment="Center"
                           VerticalContentAlignment="Center"
                           IsChecked="{Binding IsMenuOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"/>
-          <Popup PlacementTarget="{Binding #ContentButton}" PlacementMode="Bottom" VerticalOffset="-34" StaysOpen="False" IsOpen="{Binding IsMenuOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" Width="500" MinHeight="300">
+          <Popup PlacementTarget="{Binding #ContentButton}" PlacementMode="Bottom" VerticalOffset="-34" IsOpen="{Binding IsMenuOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" Width="500" MinHeight="300">
             <Border Background="{DynamicResource ThemeBackgroundBrush}" BorderBrush="{DynamicResource ThemeBorderHighBrush}" BorderThickness="{DynamicResource ThemeBorderThickness}" TextBlock.Foreground="{DynamicResource ThemeForegroundBrush}">
               <DockPanel>
                 <DockPanel Name="MenuRightColumnDockPanel" Width="200" DockPanel.Dock="Right">
@@ -33,8 +33,8 @@
                     <TextBlock Text="{TemplateBinding RightColumnHeader}" FontWeight="SemiBold" Margin="10,0" VerticalAlignment="Center"/>
                   </Grid>
                   <Panel>
-                    <ItemsPresenter x:Name="PART_RightColumnItemsPresenter" Items="{TemplateBinding RightColumnItems}" ItemsPanel="{TemplateBinding RightColumnItemsPanel}" ItemTemplate="{TemplateBinding RightColumnItemTemplate}" IsVisible="{Binding !HasSelectedItem, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
-                    <ItemsPresenter x:Name="SelectedSubItemsPresenter" Items="{TemplateBinding SelectedSubItems}" IsVisible="{TemplateBinding HasSelectedItem}"/>
+                    <ItemsPresenter x:Name="PART_RightColumnItemsPresenter" ItemsPanel="{TemplateBinding RightColumnItemsPanel}"  IsVisible="{Binding !HasSelectedItem, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                    <ItemsPresenter x:Name="SelectedSubItemsPresenter" IsVisible="{TemplateBinding HasSelectedItem}"/>
                   </Panel>
                   <!--ListBox Classes="RibbonMenuPlacesList" Items="{Binding MenuPlacesItems, RelativeSource={RelativeSource Mode=TemplatedParent}}"/-->
                 </DockPanel>
@@ -53,7 +53,7 @@
                             Height="{TemplateBinding Height}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="{TemplateBinding Padding}"
-                            TextBlock.FontWeight="SemiBold"
+                            FontWeight="SemiBold"
                             HorizontalContentAlignment="Left"
                             VerticalContentAlignment="Center"
                             IsChecked="{Binding !IsMenuOpen, RelativeSource={RelativeSource Mode=TemplatedParent}}"
@@ -67,7 +67,7 @@
                       </Panel>
                     </Panel>
                   </ToggleButton>
-                  <ItemsPresenter x:Name="PART_ItemsPresenter" Items="{TemplateBinding Items}"/>
+                  <ItemsPresenter x:Name="PART_ItemsPresenter"/>
                 </DockPanel>
               </DockPanel>
             </Border>

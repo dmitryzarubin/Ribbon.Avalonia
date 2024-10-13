@@ -1,15 +1,15 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using AvaloniaUI.Ribbon.Samples.ViewModels;
+using AvaloniaUI.Ribbon.Sample.ViewModels;
 
-namespace AvaloniaUI.Ribbon.Samples
+namespace AvaloniaUI.Ribbon.Sample
 {
     public class ViewLocator : IDataTemplate
     {
         public bool SupportsRecycling => false;
 
-        public IControl Build(object data)
+        public Control Build(object data)
         {
             var name = data.GetType().FullName.Replace("ViewModel", "View");
             var type = Type.GetType(name);

@@ -1,15 +1,13 @@
 ﻿using Avalonia;
-using Avalonia.Logging;
-using Avalonia.Platform;
 
-namespace AvaloniaUI.Ribbon.Samples
+namespace AvaloniaUI.Ribbon.Sample
 {
     class Program
     {
         static AppBuilder BuildAvaloniaApp()
         {
             return AppBuilder.Configure<App>()
-                           .UsePlatformDetect();
+                .UsePlatformDetect();
         }
 
         // The entry point. Things aren't ready yet, so at this point

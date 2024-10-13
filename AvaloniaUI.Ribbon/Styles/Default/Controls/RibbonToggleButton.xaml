@@ -8,17 +8,23 @@
         <StackPanel Orientation="Horizontal" Spacing="10">
           <local:RibbonToggleButton Content="Large Ribbon Toggle Button">
             <local:RibbonToggleButton.LargeIcon>
-              <Image Source="/Assets/settings.png" Width="32" Height="32"/>
+              <ControlTemplate>
+                <Image Source="/Assets/settings.png" Width="32" Height="32"/>
+              </ControlTemplate>
             </local:RibbonToggleButton.LargeIcon>
           </local:RibbonToggleButton>
           <local:RibbonToggleButton Size="Medium" Content="Medium Ribbon Toggle Button">
             <local:RibbonToggleButton.Icon>
-              <Image Source="/Assets/settings.png" Width="16" Height="16"/>
+              <ControlTemplate>
+                <Image Source="/Assets/settings.png" Width="16" Height="16"/>
+              </ControlTemplate>
             </local:RibbonToggleButton.Icon>
           </local:RibbonToggleButton>
           <local:RibbonToggleButton Size="Small" Content="Small Ribbon Toggle Button">
             <local:RibbonToggleButton.Icon>
-              <Image Source="/Assets/settings.png" Width="16" Height="16"/>
+              <ControlTemplate>
+                <Image Source="/Assets/settings.png" Width="16" Height="16"/>
+              </ControlTemplate>
             </local:RibbonToggleButton.Icon>
           </local:RibbonToggleButton>
         </StackPanel>

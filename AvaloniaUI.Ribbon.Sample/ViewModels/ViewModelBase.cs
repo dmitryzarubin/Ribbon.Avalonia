@@ -1,6 +1,6 @@
 ﻿using ReactiveUI;
 
-namespace AvaloniaUI.Ribbon.Samples.ViewModels
+namespace AvaloniaUI.Ribbon.Sample.ViewModels
 {
     public class ViewModelBase : ReactiveObject
     {

@@ -14,7 +14,6 @@
     <StyleInclude Source="/Styles/Default/Controls/RibbonWindow.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonButton.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonSplitButton.xaml" />
-    <StyleInclude Source="/Styles/Default/Controls/RibbonDropDownButton.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonToggleButton.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonGroupBox.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/KeyTip.xaml" />

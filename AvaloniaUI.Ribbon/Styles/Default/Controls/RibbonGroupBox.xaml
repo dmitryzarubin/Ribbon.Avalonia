@@ -10,17 +10,23 @@
             <local:RibbonGroupBox Header="Text or something" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}">
               <local:RibbonButton MinSize="Medium" MaxSize="Medium" Content="Button">
                 <local:RibbonButton.Icon>
-                  <Rectangle Width="16" Height="16" Fill="Red"/>
+                  <ControlTemplate>
+                    <Rectangle Width="16" Height="16" Fill="Red"/>
+                  </ControlTemplate>
                 </local:RibbonButton.Icon>
               </local:RibbonButton>
               <local:RibbonButton MinSize="Medium" MaxSize="Medium" Content="Button">
                 <local:RibbonButton.Icon>
-                  <Rectangle Width="16" Height="16" Fill="Red"/>
+                  <ControlTemplate>
+                    <Rectangle Width="16" Height="16" Fill="Red"/>
+                  </ControlTemplate>
                 </local:RibbonButton.Icon>
               </local:RibbonButton>
               <local:RibbonButton MinSize="Medium" MaxSize="Medium" Content="Button">
                 <local:RibbonButton.Icon>
-                  <Rectangle Width="16" Height="16" Fill="Red"/>
+                  <ControlTemplate>
+                    <Rectangle Width="16" Height="16" Fill="Red"/>
+                  </ControlTemplate>
                 </local:RibbonButton.Icon>
               </local:RibbonButton>
             </local:RibbonGroupBox>
@@ -30,10 +36,14 @@
     </Grid>
   </Design.PreviewWith>
 
+  <Styles.Resources>
+    <local:IsNotNullConverter x:Key="IsNotNullConverter"/>
+  </Styles.Resources>
+  
   <Style Selector="local|RibbonGroupBox">
     <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
-    <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
     <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
     <Setter Property="Padding" Value="5"/>
     <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -63,15 +73,15 @@
                   </Grid>
                 </Border>
               </Button>
-              <ContentPresenter x:Name="PART_HeaderPresenter" TextBlock.FontSize="11" Content="{TemplateBinding Header}" TextBlock.Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="Center"/>
+              <ContentPresenter x:Name="PART_HeaderPresenter" FontSize="11" Content="{TemplateBinding Header}" TextBlock.Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <ItemsPresenter x:Name="PART_ItemsPresenter" Items="{TemplateBinding Items}" ItemTemplate="{TemplateBinding ItemTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="{TemplateBinding Padding}">
-              <ItemsPresenter.ItemsPanel>
+            <ItemsControl x:Name="PART_ItemsPresenter" ItemsSource="{TemplateBinding ItemsSource}" ItemTemplate="{TemplateBinding ItemTemplate}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="{TemplateBinding Padding}">
+              <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                  <local:RibbonGroupWrapPanel x:Name="PART_ItemsPanel" DisplayMode="{TemplateBinding DisplayMode}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                  <WrapPanel x:Name="PART_ItemsPanel"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 </ItemsPanelTemplate>
-              </ItemsPresenter.ItemsPanel>
-            </ItemsPresenter>
+              </ItemsControl.ItemsPanel>
+            </ItemsControl>
           </DockPanel>
         </Border>
       </ControlTemplate>
@@ -92,11 +102,11 @@
   <!--Style Selector="local|RibbonGroupBox">
     <Setter Property="MinWidth" Value="50"/>
   </Style-->
-  <Style Selector="local|Ribbon[Orientation=Horizontal] local|RibbonGroupBox /template/ local|RibbonGroupWrapPanel#PART_ItemsPanel">
+  <Style Selector="local|Ribbon[Orientation=Horizontal] local|RibbonGroupBox /template/ WrapPanel#PART_ItemsPanel">
     <Setter Property="Orientation" Value="Vertical"/>
     <Setter Property="Height" Value="72"/>
   </Style>
-  <Style Selector="local|Ribbon[Orientation=Vertical] local|RibbonGroupBox /template/ local|RibbonGroupWrapPanel#PART_ItemsPanel">
+  <Style Selector="local|Ribbon[Orientation=Vertical] local|RibbonGroupBox /template/ WrapPanel#PART_ItemsPanel">
     <Setter Property="Orientation" Value="Horizontal"/>
     <Setter Property="Width" Value="132"/>
   </Style>

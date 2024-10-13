@@ -15,10 +15,13 @@
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonButton.xaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonSplitButton.xaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonDropDownButton.xaml" />
-    <StyleInclude Source="/Styles/Fluent/Controls/RibbonDropDownButtonItemPresenter.xaml" />
+    <StyleInclude Source="/Styles/Fluent/Controls/RibbonDropDownToggleItem.xaml" />
+    <StyleInclude Source="/Styles/Fluent/Controls/RibbonDropDownButtonItem.xaml" />
+    <StyleInclude Source="/Styles/Fluent/Controls/RibbonDropDownSeparatorItem.xaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonToggleButton.xaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonGroupBox.xaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/KeyTip.xaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonContextualTabGroup.xaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/QuickAccessToolbar.xaml" />
+    <StyleInclude Source="/Styles/Fluent/Controls/ToolBar.xaml" />
 </Styles>

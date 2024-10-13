@@ -7,62 +7,86 @@
       <local:Gallery>
         <local:GalleryItem Content="Item 1">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="Red"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="Red"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 2">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="OrangeRed"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="OrangeRed"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 3">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="Orange"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="Orange"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 4">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="Yellow"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="Yellow"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 5">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="GreenYellow"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="GreenYellow"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 6">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="YellowGreen"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="YellowGreen"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 7">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="Green"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="Green"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 8">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="Turquoise"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="Turquoise"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 9">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="Cyan"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="Cyan"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 10">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="SkyBlue"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="SkyBlue"/>  
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 11">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="Blue"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="Blue"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
         <local:GalleryItem Content="Item 12">
           <local:GalleryItem.Icon>
-            <Rectangle Width="16" Height="16" Fill="BlueViolet"/>
+            <ControlTemplate>
+              <Rectangle Width="16" Height="16" Fill="BlueViolet"/>
+            </ControlTemplate>
           </local:GalleryItem.Icon>
         </local:GalleryItem>
       </local:Gallery>
@@ -176,7 +200,7 @@
               </local:GalleryScrollContentPresenter>
             </DockPanel>
           </Border>
-          <Popup IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" StaysOpen="False" PlacementMode="Top" VerticalOffset="{Binding Bounds.Height, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+          <Popup IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" PlacementMode="Top" VerticalOffset="{Binding Bounds.Height, RelativeSource={RelativeSource Mode=TemplatedParent}}">
             <Border x:Name="PART_FlyoutRoot" Background="{DynamicResource ThemeBackgroundBrush}" BorderBrush="{DynamicResource ThemeBorderMidBrush}" BorderThickness="{DynamicResource ThemeBorderThickness}" Width="{Binding Bounds.Width, RelativeSource={RelativeSource Mode=TemplatedParent}}">
               <ScrollViewer x:Name="PART_FlyoutScrollViewer" Height="{Binding Bounds.Height, RelativeSource={RelativeSource Mode=TemplatedParent}}" Padding="{TemplateBinding Padding}">
                 <ContentControl x:Name="PART_FlyoutItemsPresenterHolder"/>
@@ -184,10 +208,8 @@
             </Border>
           </Popup>
           <ItemsPresenter Name="PART_ItemsPresenter"
-                              Items="{TemplateBinding Items}"
-                              ItemsPanel="{TemplateBinding ItemsPanel}"
-                              ItemTemplate="{TemplateBinding ItemTemplate}"
-                              VirtualizationMode="{TemplateBinding VirtualizationMode}"/>
+                          ItemsPanel="{TemplateBinding ItemsPanel}"
+          /> <!-- VirtualizationMode="{TemplateBinding VirtualizationMode}" -->
         </Panel>
       </ControlTemplate>
     </Setter>

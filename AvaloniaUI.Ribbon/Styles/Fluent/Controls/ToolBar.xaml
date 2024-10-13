@@ -1,0 +1,172 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
+    <Design.PreviewWith>
+        <DockPanel Width="400" Height="200">
+            <DockPanel.Resources>
+                <ControlTemplate x:Key="LargeIcon">
+                    <Panel Width="27" Height="27">
+                        <Path Data="M 0.5 0.5 L 26.5 0.5 L 26.5 26.5 L 3.5 26.5 L 0.5 23.5 Z"
+                              Fill="#FFD998DD" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="19"
+                                Height="12" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="11" Height="7" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="LargeIconDisabled">
+                    <Panel Width="27" Height="27">
+                        <Path Data="M 0.5 0.5 L 26.5 0.5 L 26.5 26.5 L 3.5 26.5 L 0.5 23.5 Z"
+                              Fill="DimGray" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="19"
+                                Height="12" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="11" Height="7" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="Icon">
+                    <Panel Width="16" Height="16">
+                        <Path Data="M 0.5 0.5 L 15.5 0.5 L 15.5 15.5 L 2.5 15.5 L 0.5 13.5 Z"
+                              Fill="#FFD998DD" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10"
+                                Height="6" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="8" Height="5" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="IconDisabled">
+                    <Panel Width="16" Height="16">
+                        <Path Data="M 0.5 0.5 L 15.5 0.5 L 15.5 15.5 L 2.5 15.5 L 0.5 13.5 Z"
+                              Fill="DimGray" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10"
+                                Height="6" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="8" Height="5" />
+                    </Panel>
+                </ControlTemplate>
+            </DockPanel.Resources>
+
+            <local:ToolBar DockPanel.Dock="Top" Orientation="Horizontal">
+                <local:ToolBar.Items>
+                    <local:RibbonGroupBox Header="Group 1">
+                        <local:RibbonButton MinSize="Large" MaxSize="Large" Content="Button"
+                                            LargeIcon="{StaticResource LargeIcon}"
+                                            LargeIconDisabled="{StaticResource LargeIconDisabled}"
+                                            Icon="{StaticResource Icon}"
+                                            IconDisabled="{StaticResource IconDisabled}" />
+                        <local:RibbonButton MinSize="Large" MaxSize="Large" Content="Button"
+                                            LargeIcon="{StaticResource LargeIcon}"
+                                            LargeIconDisabled="{StaticResource LargeIconDisabled}"
+                                            Icon="{StaticResource Icon}"
+                                            IconDisabled="{StaticResource IconDisabled}" />
+                    </local:RibbonGroupBox>
+                    <local:RibbonGroupBox Header="Group 2">
+                        <local:RibbonButton MinSize="Medium" MaxSize="Medium" Size="Medium" Content="But 1"
+                                            LargeIcon="{StaticResource LargeIcon}"
+                                            LargeIconDisabled="{StaticResource LargeIconDisabled}"
+                                            Icon="{StaticResource Icon}"
+                                            IconDisabled="{StaticResource IconDisabled}" />
+                        <local:RibbonButton MinSize="Medium" MaxSize="Medium" Content="But 2"
+                                            LargeIcon="{StaticResource LargeIcon}"
+                                            LargeIconDisabled="{StaticResource LargeIconDisabled}"
+                                            Icon="{StaticResource Icon}"
+                                            IconDisabled="{StaticResource IconDisabled}" />
+                        <local:RibbonButton MinSize="Medium" MaxSize="Medium" Content="But 3"
+                                            LargeIcon="{StaticResource LargeIcon}"
+                                            LargeIconDisabled="{StaticResource LargeIconDisabled}"
+                                            Icon="{StaticResource Icon}"
+                                            IconDisabled="{StaticResource IconDisabled}" />
+                    </local:RibbonGroupBox>
+                </local:ToolBar.Items>
+            </local:ToolBar>
+            <Panel Name="FakePanel" Background="Aqua" />
+        </DockPanel>
+    </Design.PreviewWith>
+
+    <Style Selector="local|ToolBar">
+        <Setter Property="FontSize" Value="12.5" />
+        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Style Selector="^[Orientation=Horizontal]">
+            <Setter Property="Height" Value="90" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel x:Name="ContentPanel"
+                           Background="{TemplateBinding Background}"
+                           Margin="{TemplateBinding Padding}"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch">
+
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" BoxShadow="0 4 10 #40000000">
+                            <ItemsPresenter x:Name="PART_ItemsPresenter" HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch">
+                                <ItemsPresenter.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <local:RibbonGroupsStackPanel x:Name="PART_ItemsPanel"
+                                                                      HorizontalAlignment="Left"
+                                                                      VerticalAlignment="Stretch"
+                                                                      Orientation="Horizontal"
+                                                                      Width="{Binding $parent[ItemsPresenter].Bounds.Width}"
+                                                                      Margin="0" />
+                                    </ItemsPanelTemplate>
+                                </ItemsPresenter.ItemsPanel>
+                            </ItemsPresenter>
+                        </Border>
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="^[Orientation=Vertical]">
+            <Setter Property="Width" Value="138" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel x:Name="ContentPanel"
+                           Background="{TemplateBinding Background}"
+                           Margin="{TemplateBinding Padding}"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch">
+
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" BoxShadow="0 4 10 #40000000">
+                            <ItemsPresenter x:Name="PART_ItemsPresenter" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <ItemsPresenter.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <local:RibbonGroupsStackPanel x:Name="PART_ItemsPanel"
+                                                                      VerticalAlignment="Stretch"
+                                                                      HorizontalAlignment="Stretch"
+                                                                      Orientation="Vertical"
+                                                                      Height="{Binding $parent[ItemsPresenter].Bounds.Height}"
+                                                                      Margin="0" />
+                                    </ItemsPanelTemplate>
+                                </ItemsPresenter.ItemsPanel>
+                            </ItemsPresenter>
+                        </Border>
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+    </Style>
+
+
+</Styles>

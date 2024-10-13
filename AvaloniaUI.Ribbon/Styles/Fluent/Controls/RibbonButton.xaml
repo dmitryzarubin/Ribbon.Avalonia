@@ -2,118 +2,200 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
-  <Design.PreviewWith>
-    <Grid Height="90">
-      <local:RibbonGroupBox Header="Group">
-        <StackPanel Orientation="Horizontal" Spacing="10">
-          <local:RibbonButton Content="Large Ribbon Button">
-            <local:RibbonButton.LargeIcon>
-              <Image Source="/Assets/settings.png" Width="32" Height="32"/>
-            </local:RibbonButton.LargeIcon>
-          </local:RibbonButton>
-          <local:RibbonButton Size="Medium" Content="Medium Ribbon Button">
-            <local:RibbonButton.Icon>
-              <Image Source="/Assets/settings.png" Width="16" Height="16"/>
-            </local:RibbonButton.Icon>
-          </local:RibbonButton>
-          <local:RibbonButton Size="Small" Content="Small Ribbon Button">
-            <local:RibbonButton.Icon>
-              <Image Source="/Assets/settings.png" Width="16" Height="16"/>
-            </local:RibbonButton.Icon>
-          </local:RibbonButton>
-        </StackPanel>
-      </local:RibbonGroupBox>
-    </Grid>
-  </Design.PreviewWith>
 
-  <Style Selector="local|RibbonButton">
-    <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Border Classes="RibbonButtonBackgroundBorder">
-          <DockPanel>
-            <TemplatedControl Template="{TemplateBinding Icon}" DockPanel.Dock="Left" Width="16" Height="16"/>
-            <ContentPresenter Classes="MediumContentPresenter" Content="{TemplateBinding Content}" Margin="3,0,0,0" />
-          </DockPanel>
-        </Border>
-      </ControlTemplate>
-    </Setter>
-    <Setter Property="QuickAccessTemplate">
-      <ControlTemplate>
-        <Button Classes="quickAccessButton" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" ToolTip.Tip="{Binding ToolTip.Tip}" local:KeyTip.KeyTipKeys="{Binding KeyTip.Tip}" MinWidth="45" Height="34" Focusable="False">
-          <TemplatedControl Template="{Binding QuickAccessIcon}" Width="16" Height="16"/>
-        </Button>
-      </ControlTemplate>
-    </Setter>
-  </Style>
-  <Style Selector="Button.quickAccessButton:not(:pointerover):not(:pressed)">
-    <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="BorderBrush" Value="Transparent"/>
-  </Style>
-  <Style Selector="local|RibbonWindow Button.quickAccessButton:not(:pointerover):not(:pressed)">
-    <Setter Property="Foreground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:RibbonWindow}}}"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[IsActive=False] Button.quickAccessButton:not(:pointerover):not(:pressed) > TemplatedControl">
-    <Setter Property="Opacity" Value="0.5"/>
-  </Style>
-  <Style Selector="local|RibbonButton[Size=Large]">
-    <Setter Property="Padding" Value="9,4" />
-    <Setter Property="MaxWidth" Value="66"/>
-    <Setter Property="Height" Value="72"/>
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Border Classes="RibbonButtonBackgroundBorder">
-          <DockPanel VerticalAlignment="Stretch">
-            <TemplatedControl Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top" Width="32" Height="32"/>
-            <ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0" VerticalAlignment="Stretch"/>
-          </DockPanel>
-        </Border>
-      </ControlTemplate>
-    </Setter>
-  </Style>
-  <Style Selector="local|RibbonButton[Size=Large] /template/ ContentPresenter TextBlock">
-    <Setter Property="TextWrapping" Value="Wrap"/>
-    <Setter Property="TextAlignment" Value="Center"/>
-    <Setter Property="Margin" Value="0,-3"/>
-    <Setter Property="VerticalAlignment" Value="Center"/>
-  </Style>
-  <Style Selector="local|RibbonButton[Size=Medium]">
-    <Setter Property="Height" Value="24"/>
-  </Style>
-  <Style Selector="local|RibbonButton[Size=Small]">
-    <Setter Property="Width" Value="24"/>
-    <Setter Property="Height" Value="24"/>
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Border Classes="RibbonButtonBackgroundBorder">
-          <TemplatedControl Template="{TemplateBinding Icon}" Width="16" Height="16"/>
-        </Border>
-      </ControlTemplate>
-    </Setter>
-  </Style>
-  <!--Style Selector="local|Ribbon[Orientation=Vertical] local|RibbonButton[Size=Medium]">
-    <!-Setter Property="Width" Value="132"/->
-    <Setter Property="Width" Value="{Binding Bounds.Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Panel}}"/>
-  </Style-->
-  <!--Style Selector="local|Ribbon[Orientation=Vertical] local|RibbonButton[Size=Medium] /template/ ContentPresenter.MediumContentPresenter">
-    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-  </Style-->
-  <Style Selector="local|RibbonButton:not(local|RibbonButton[Size=Large])">
-    <Setter Property="Padding" Value="3" />
-  </Style>
-  <Style Selector="local|RibbonButton /template/ Border.RibbonButtonBackgroundBorder">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="Transparent" />
-    <Setter Property="BorderThickness" Value="{TemplateBinding BorderThickness}" />
-    <Setter Property="Padding" Value="{TemplateBinding Padding}"/>
-    <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
-  </Style>
-  <Style Selector="local|RibbonButton:pointerover /template/ Border.RibbonButtonBackgroundBorder">
-    <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
-  </Style>
-  <Style Selector="local|RibbonButton:pressed /template/ Border.RibbonButtonBackgroundBorder">
-    <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
-  </Style>
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="../Res.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+    <Design.PreviewWith>
+        <Grid Height="100">
+            <Grid.Resources>
+                <ControlTemplate x:Key="LargeIcon">
+                    <Panel Width="27" Height="27">
+                        <Path Data="M 0.5 0.5 L 26.5 0.5 L 26.5 26.5 L 3.5 26.5 L 0.5 23.5 Z"
+                              Fill="#FFD998DD" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="19"
+                                Height="12" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="11" Height="7" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="LargeIconDisabled">
+                    <Panel Width="27" Height="27">
+                        <Path Data="M 0.5 0.5 L 26.5 0.5 L 26.5 26.5 L 3.5 26.5 L 0.5 23.5 Z"
+                              Fill="DimGray" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="19"
+                                Height="12" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="11" Height="7" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="Icon">
+                    <Panel Width="16" Height="16">
+                        <Path Data="M 0.5 0.5 L 15.5 0.5 L 15.5 15.5 L 2.5 15.5 L 0.5 13.5 Z"
+                              Fill="#FFD998DD" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10"
+                                Height="6" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="8" Height="5" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="IconDisabled">
+                    <Panel Width="16" Height="16">
+                        <Path Data="M 0.5 0.5 L 15.5 0.5 L 15.5 15.5 L 2.5 15.5 L 0.5 13.5 Z"
+                              Fill="DimGray" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10"
+                                Height="6" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="8" Height="5" />
+                    </Panel>
+                </ControlTemplate>
+            </Grid.Resources>
+
+            <local:RibbonGroupBox Header="Group">
+                    <local:RibbonButton Content="Op" LargeIcon="{StaticResource LargeIcon}"
+                                        LargeIconDisabled="{StaticResource LargeIconDisabled}" />
+                    <local:RibbonButton Content="Open connection" IsEnabled="False"
+                                        LargeIcon="{StaticResource LargeIcon}"
+                                        LargeIconDisabled="{StaticResource LargeIconDisabled}" />
+                    <local:RibbonButton Size="Medium" Content="Medium Ribbon Button" Icon="{StaticResource Icon}"
+                                        IconDisabled="{StaticResource IconDisabled}" />
+                    <local:RibbonButton Size="Small" Content="Small Ribbon Button" Icon="{StaticResource Icon}"
+                                        IconDisabled="{StaticResource IconDisabled}" />
+            </local:RibbonGroupBox>
+        </Grid>
+    </Design.PreviewWith>
+
+    <Style Selector="local|RibbonButton">
+        <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}"/>
+        
+        <Style Selector="^[Size=Large]">
+            <Setter Property="MaxWidth" Value="{StaticResource LargeButtonMaxWidth}" />
+            <Setter Property="Height" Value="{StaticResource LargeButtonHeight}" />
+            <Setter Property="Padding" Value="{StaticResource LargeButtonPadding}" />
+
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Classes="RibbonButtonBackgroundBorder">
+                        <DockPanel VerticalAlignment="Stretch">
+                            <TemplatedControl Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top"
+                                              Width="{StaticResource LargeButtonIconWidth}"
+                                              Height="{StaticResource LargeButtonIconHeight}" />
+                            <ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0"
+                                              VerticalAlignment="Stretch" />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^[IsEffectivelyEnabled=True] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonButton].LargeIcon}" />
+            </Style>
+
+            <Style Selector="^[IsEffectivelyEnabled=False] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonButton].LargeIconDisabled}" />
+            </Style>
+
+            <Style Selector="^ /template/ ContentPresenter TextBlock">
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^[Size=Medium]">
+            <Setter Property="MaxWidth" Value="{StaticResource SmallButtonMaxWidth}" />
+            <Setter Property="Height" Value="{StaticResource SmallButtonHeight}" />
+            <Setter Property="Padding" Value="{StaticResource SmallButtonPadding}" />
+
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Classes="RibbonButtonBackgroundBorder">
+                        <DockPanel>
+                            <TemplatedControl Template="{TemplateBinding Icon}"
+                                              DockPanel.Dock="Left"
+                                              Width="{StaticResource SmallButtonIconWidth}"
+                                              Height="{StaticResource SmallButtonIconHeight}" />
+                            <ContentPresenter Content="{TemplateBinding Content}" Margin="3,0,0,0"
+                                              VerticalAlignment="Center" />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^[IsEffectivelyEnabled=True] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonButton].Icon}" />
+            </Style>
+
+            <Style Selector="^[IsEffectivelyEnabled=False] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonButton].IconDisabled}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Size=Small]">
+            <Setter Property="Width" Value="{StaticResource SmallButtonWidth}" />
+            <Setter Property="Height" Value="{StaticResource SmallButtonHeight}" />
+            <Setter Property="Padding" Value="{StaticResource SmallButtonPadding}" />
+
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Classes="RibbonButtonBackgroundBorder">
+                        <TemplatedControl Template="{TemplateBinding Icon}"
+                                          Width="{StaticResource SmallButtonIconWidth}"
+                                          Height="{StaticResource SmallButtonIconHeight}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style Selector="^[IsEffectivelyEnabled=True] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonButton].Icon}" />
+            </Style>
+
+            <Style Selector="^[IsEffectivelyEnabled=False] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonButton].IconDisabled}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[IsEffectivelyEnabled=True] /template/ ContentPresenter TextBlock">
+            <Setter Property="Foreground" Value="{Binding $parent[local:RibbonButton].Foreground}" />
+        </Style>
+
+        <Style Selector="^[IsEffectivelyEnabled=False] /template/ ContentPresenter TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource TextControlBackgroundDisabled}" />
+        </Style>
+
+        <Style Selector="^ /template/ Border.RibbonButtonBackgroundBorder">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="{TemplateBinding BorderThickness}" />
+            <Setter Property="Padding" Value="{TemplateBinding Padding}" />
+            <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border.RibbonButtonBackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
+        </Style>
+        <Style Selector="^:pressed /template/ Border.RibbonButtonBackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
+        </Style>
+
+    </Style>
+
 </Styles>

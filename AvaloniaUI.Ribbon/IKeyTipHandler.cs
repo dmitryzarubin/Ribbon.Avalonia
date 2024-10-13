@@ -1,14 +1,10 @@
 ﻿using Avalonia.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AvaloniaUI.Ribbon
+namespace AvaloniaUI.Ribbon;
+
+public interface IKeyTipHandler
 {
-    public interface IKeyTipHandler
-    {
-        void ActivateKeyTips(Ribbon ribbon, IKeyTipHandler prev);
+    void ActivateKeyTips(Ribbon ribbon, IKeyTipHandler prev);
 
-        bool HandleKeyTipKeyPress(Key key);
-    }
+    bool HandleKeyTipKeyPress(Key key);
 }

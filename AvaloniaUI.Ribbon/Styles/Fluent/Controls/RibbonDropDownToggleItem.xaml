@@ -1,0 +1,74 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
+
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="../Res.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+    <Style Selector="local|RibbonDropDownToggleItem">
+        <Setter Property="MaxWidth" Value="{StaticResource SmallButtonMaxWidth}" />
+        <Setter Property="Height" Value="{StaticResource SmallButtonHeight}" />
+        <Setter Property="Padding" Value="{StaticResource SmallButtonPadding}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Classes="RibbonToggleButtonBackgroundBorder">
+                    <DockPanel>
+                        <TemplatedControl Template="{TemplateBinding Icon}"
+                                          DockPanel.Dock="Left"
+                                          Width="{StaticResource SmallButtonIconWidth}"
+                                          Height="{StaticResource SmallButtonIconHeight}" />
+                        <ContentPresenter Content="{TemplateBinding Content}" Margin="3,0,0,0"
+                                          VerticalAlignment="Center" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style
+            Selector="^[IsEffectivelyEnabled=True][IsChecked=False] /template/ TemplatedControl">
+            <Setter Property="Template" Value="{Binding $parent[local:RibbonDropDownToggleItem].Icon}" />
+        </Style>
+
+        <Style
+            Selector="^^[IsEffectivelyEnabled=True][IsChecked=True] /template/ TemplatedControl">
+            <Setter Property="Template" Value="{Binding $parent[local:RibbonDropDownToggleItem].IconToggled}" />
+        </Style>
+
+        <Style Selector="^[IsEffectivelyEnabled=False] /template/ TemplatedControl">
+            <Setter Property="Template" Value="{Binding $parent[local:RibbonDropDownToggleItem].IconDisabled}" />
+        </Style>
+
+        <Style Selector="^[IsEffectivelyEnabled=True] /template/ ContentPresenter TextBlock">
+            <Setter Property="Foreground" Value="{Binding $parent[local:RibbonDropDownToggleItem].Foreground}" />
+        </Style>
+
+        <Style Selector="^[IsEffectivelyEnabled=False] /template/ ContentPresenter TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource TextControlBackgroundDisabled}" />
+        </Style>
+
+        <Style Selector="^ /template/ Border.RibbonToggleButtonBackgroundBorder">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="{TemplateBinding BorderThickness}" />
+            <Setter Property="Padding" Value="{TemplateBinding Padding}" />
+            <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border.RibbonToggleButtonBackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
+        </Style>
+        <Style Selector="^[IsChecked=True] /template/ Border.RibbonToggleButtonBackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
+        </Style>
+    </Style>
+
+
+</Styles>

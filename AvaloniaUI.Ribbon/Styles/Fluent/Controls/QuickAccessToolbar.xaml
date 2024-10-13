@@ -29,9 +29,7 @@
                         </Border>
                         <ScrollViewer Classes="menuscroller">
                           <ItemsPresenter Name="PART_ItemsPresenter"
-                                          Items="{TemplateBinding Items}"
                                           ItemsPanel="{TemplateBinding ItemsPanel}"
-                                          ItemTemplate="{TemplateBinding ItemTemplate}"
                                           Margin="{DynamicResource MenuFlyoutScrollerMargin}"
                                           KeyboardNavigation.TabNavigation="Continue"
                                           Grid.IsSharedSizeScope="True" />
@@ -66,7 +64,7 @@
               <Path Data="M 0.5 0 L 3.5 3 L 6.5 0" Stroke="{Binding $parent[ToggleButton].Foreground}" StrokeThickness="1" HorizontalAlignment="Center" Width="7" Height="3" ClipToBounds="True"/>
             </StackPanel>
           </ToggleButton>
-          <ItemsPresenter Items="{TemplateBinding Items}">
+          <ItemsPresenter>
             <ItemsPresenter.ItemsPanel>
               <ItemsPanelTemplate>
                 <StackPanel Orientation="Horizontal"/>

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using System.IO;
-using System.Text;
-using System.Windows.Input;
 using System.Runtime.CompilerServices;
-using ReactiveUI;
 
-namespace AvaloniaUI.Ribbon.Samples.ViewModels
+namespace AvaloniaUI.Ribbon.Sample.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {

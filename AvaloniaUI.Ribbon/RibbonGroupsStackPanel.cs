@@ -1,207 +1,144 @@
-﻿using Avalonia;
+﻿using System;
+using System.Collections.Specialized;
+using System.Linq;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.LogicalTree;
 using Avalonia.Threading;
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
-namespace AvaloniaUI.Ribbon
+namespace AvaloniaUI.Ribbon;
+
+public class RibbonGroupsStackPanel : StackPanel
 {
-    public class RibbonGroupsStackPanel : StackPanel //Panel
+    static RibbonGroupsStackPanel()
     {
-        static RibbonGroupsStackPanel()
-        {
-            ParentProperty.Changed.AddClassHandler<RibbonGroupsStackPanel>((sender, e) =>
-            {
-                Dispatcher.UIThread.Post(() => sender.SizeControls());
-            });
+        ParentProperty.Changed.AddClassHandler<RibbonGroupsStackPanel>((sender, e) => { Dispatcher.UIThread.Post(sender.SizeControls); });
 
-            BoundsProperty.Changed.AddClassHandler<RibbonGroupsStackPanel>((sender, e) =>
-            {
-                if ((e.NewValue != null) && (e.NewValue is Rect newRect))
-                    sender.SizeControls(newRect.Size);
-            });
+        BoundsProperty.Changed.AddClassHandler<RibbonGroupsStackPanel>((sender, e) =>
+        {
+            if (e.NewValue is Rect newRect)
+                sender.SizeControls(newRect.Size);
+        });
+    }
+
+    protected override void OnAttachedToLogicalTree(LogicalTreeAttachmentEventArgs e)
+    {
+        base.OnAttachedToLogicalTree(e);
+        /*Measure(Bounds.Size);
+        Arrange(Bounds);*/
+
+        SizeControls();
+    }
+
+    protected override void LogicalChildrenCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        base.LogicalChildrenCollectionChanged(sender, e);
+
+        /*foreach (RibbonGroupBox box in Children.OfType<RibbonGroupBox>())
+            box.DisplayMode = GroupDisplayMode.Small;*/
+
+        var size = new Size(double.PositiveInfinity, double.PositiveInfinity);
+        //Measure(size);
+        SizeControls(size);
+        SizeControls();
+    }
+
+    private void SizeControls()
+    {
+        SizeControls(Bounds.Size);
+    }
+
+    private void SizeControls(Size newSize)
+    {
+        if (Orientation == Orientation.Vertical)
+        {
+            if (GetChildrenTotalHeight() >= newSize.Height)
+                foreach (var child in Children.Reverse().OfType<RibbonGroupBox>().Where(x => x.DisplayMode == GroupDisplayMode.Large))
+                {
+                    UpdateGroupBoxDisplayMode(child, GroupDisplayMode.Small);
+                    if (GetChildrenTotalHeight() < newSize.Height)
+                        break;
+                }
+            else
+                foreach (var child in Children.OfType<RibbonGroupBox>().Where(x => x.DisplayMode == GroupDisplayMode.Small))
+                {
+                    UpdateGroupBoxDisplayMode(child, GroupDisplayMode.Large);
+
+                    var totalWidth = GetChildrenTotalHeight();
+                    if (totalWidth <= newSize.Height)
+                        break;
+
+                    if (GetChildrenTotalHeight() > newSize.Height)
+                    {
+                        UpdateGroupBoxDisplayMode(child, GroupDisplayMode.Small);
+                        break;
+                    }
+                }
+        }
+        else
+        {
+            if (GetChildrenTotalWidth() >= newSize.Width)
+                foreach (var child in Children.Reverse().OfType<RibbonGroupBox>().Where(x => x.DisplayMode == GroupDisplayMode.Large))
+                {
+                    UpdateGroupBoxDisplayMode(child, GroupDisplayMode.Small);
+                    if (GetChildrenTotalWidth() < newSize.Width)
+                        break;
+                }
+            else
+                foreach (var child in Children.OfType<RibbonGroupBox>().Where(x => x.DisplayMode == GroupDisplayMode.Small))
+                {
+                    UpdateGroupBoxDisplayMode(child, GroupDisplayMode.Large);
+
+                    var totalWidth = GetChildrenTotalWidth();
+                    if (totalWidth <= newSize.Width)
+                        break;
+
+                    if (GetChildrenTotalWidth() > newSize.Width)
+                    {
+                        UpdateGroupBoxDisplayMode(child, GroupDisplayMode.Small);
+                        break;
+                    }
+                }
         }
 
-        /*public RibbonGroupsStackPanel()
+        void UpdateGroupBoxDisplayMode(RibbonGroupBox child, GroupDisplayMode displayMode)
         {
-            LayoutUpdated += (sneder, args) => UpdateLayoutState();
-        }*/
-
-        /*protected override void ChildrenChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            base.ChildrenChanged(sender, e);
-            SizeControls();
-        }*/
-
-        protected override void OnAttachedToLogicalTree(LogicalTreeAttachmentEventArgs e)
-        {
-            base.OnAttachedToLogicalTree(e);
-            /*Measure(Bounds.Size);
-            Arrange(Bounds);*/
-            
-            SizeControls();
+            child.DisplayMode = displayMode;
+            child.InvalidateMeasure();
+            child.Measure(newSize);
         }
+    }
 
-        protected override void LogicalChildrenCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+    private double GetChildrenTotalWidth()
+    {
+        var desiredSize = Orientation == Orientation.Vertical
+            ? DesiredSize.WithWidth(Bounds.Width)
+            : DesiredSize.WithHeight(Bounds.Height);
+
+        Arrange(new Rect(desiredSize));
+        Measure(desiredSize);
+
+        return Children.OfType<RibbonGroupBox>().Sum(groupBox => Math.Max(0, groupBox.Bounds.Width));
+    }
+
+    private double GetChildrenTotalHeight()
+    {
+        var children = Children.OfType<RibbonGroupBox>();
+        double totalHeight = 0;
+
+        Arrange(new Rect(DesiredSize));
+        Measure(DesiredSize);
+        
+        //return Children.OfType<RibbonGroupBox>().Sum(groupBox => Math.Max(0, groupBox.Bounds.Height));
+        
+        for (var i = 0; i < children.Count(); i++)
         {
-            base.LogicalChildrenCollectionChanged(sender, e);
-            
-            /*foreach (RibbonGroupBox box in Children.OfType<RibbonGroupBox>())
-                box.DisplayMode = GroupDisplayMode.Small;*/
-            
-            Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
-            //Measure(size);
-            SizeControls(size);
-            SizeControls();
+            var newSize = children.ElementAt(i).Bounds.Y - totalHeight;
+            if (newSize <= 0)
+                totalHeight += children.ElementAt(i).Bounds.Height + newSize;
         }
         
-        private void SizeControls()
-        {
-            SizeControls(Bounds.Size);
-        }
-
-        private void SizeControls(Size newSize)
-        {
-            var children = Children.Reverse().OfType<RibbonGroupBox>();
-
-            if (Orientation == Orientation.Vertical)
-            {
-                int count = 0;
-                while (GetChildrenTotalHeight() >= newSize.Height)
-                {
-                    var largeChildren = children.Where(x => x.DisplayMode == GroupDisplayMode.Large);
-                    
-                    if (largeChildren.Count() > 0)
-                    {
-                        var firstLargeChild = largeChildren.First();
-                        firstLargeChild.DisplayMode = GroupDisplayMode.Small;
-                        firstLargeChild.InvalidateArrange();
-                        firstLargeChild.InvalidateMeasure();
-                        firstLargeChild.Measure(newSize);
-                    }
-                    else
-                        break;
-
-                    count++;
-                    if (count >= children.Count())
-                        break;
-                }
-                count = 0;
-                while (GetChildrenTotalHeight() < newSize.Height)
-                {
-                    var nonLargeChildren = children.Where(x => x.DisplayMode != GroupDisplayMode.Large);
-                    
-                    if (nonLargeChildren.Count() > 0)
-                    {
-                        var lastNonLargeChild = nonLargeChildren.Last();
-                        lastNonLargeChild.DisplayMode = GroupDisplayMode.Large;
-                        lastNonLargeChild.InvalidateArrange();
-                        lastNonLargeChild.InvalidateMeasure();
-                        lastNonLargeChild.Measure(newSize);
-
-                        if (GetChildrenTotalHeight() > newSize.Height)
-                            lastNonLargeChild.DisplayMode = GroupDisplayMode.Small;
-                    }
-                    else
-                        break;
-
-                    count++;
-                    if (count >= children.Count())
-                        break;
-                }
-            }
-            else
-            {
-                int count = 0;
-                while (GetChildrenTotalWidth() >= newSize.Width)
-                {
-                    var largeChildren = children.Where(x => x.DisplayMode == GroupDisplayMode.Large);
-                    
-                    if (largeChildren.Count() > 0)
-                    {
-                        var firstLargeChild = largeChildren.First();
-                        firstLargeChild.DisplayMode = GroupDisplayMode.Small;
-                        firstLargeChild.InvalidateArrange();
-                        firstLargeChild.InvalidateMeasure();
-                        firstLargeChild.Measure(newSize);
-                    }
-                    else
-                        break;
-
-                    count++;
-                    if (count >= children.Count())
-                        break;
-                }
-                count = 0;
-                while (GetChildrenTotalWidth() < newSize.Width)
-                {
-                    var nonLargeChildren = children.Where(x => x.DisplayMode != GroupDisplayMode.Large);
-                    
-                    if (nonLargeChildren.Count() > 0)
-                    {
-                        var lastNonLargeChild = nonLargeChildren.Last();
-                        lastNonLargeChild.DisplayMode = GroupDisplayMode.Large;
-                        lastNonLargeChild.InvalidateArrange();
-                        lastNonLargeChild.InvalidateMeasure();
-                        lastNonLargeChild.Measure(newSize);
-
-                        if (GetChildrenTotalWidth() > newSize.Width)
-                            lastNonLargeChild.DisplayMode = GroupDisplayMode.Small;
-                    }
-                    else
-                        break;
-
-                    count++;
-                    if (count >= children.Count())
-                        break;
-                }
-            }
-        }
-
-        double GetChildrenTotalWidth()
-        {
-            var children = Children.OfType<RibbonGroupBox>(); //.Reverse().Where(x => x is RibbonGroupBox).Cast<RibbonGroupBox>();
-            double totalWidth = 0;
-
-            Size desiredSize = DesiredSize;
-            if (Orientation == Orientation.Vertical)
-                desiredSize = desiredSize.WithWidth(Bounds.Width);
-            else
-                desiredSize = desiredSize.WithHeight(Bounds.Height);
-
-            Arrange(new Rect(desiredSize));
-            Measure(desiredSize);
-            for (int i = 0; i < children.Count(); i++)
-            {
-                /*double newSize = children.ElementAt(i).Bounds.X - totalWidth;
-                if (newSize <= 0)
-                    totalWidth += children.ElementAt(i).Bounds.Width + newSize;*/
-                totalWidth += Math.Max(0, children.ElementAt(i).Bounds.Width);
-            }
-
-            return totalWidth;
-        }
-
-        double GetChildrenTotalHeight()
-        {
-            var children = Children.OfType<RibbonGroupBox>(); //.Where(x => x is RibbonGroupBox).Cast<RibbonGroupBox>();
-            double totalHeight = 0;
-
-            Arrange(new Rect(DesiredSize));
-            Measure(DesiredSize);
-            for (int i = 0; i < children.Count(); i++)
-            {
-                double newSize = children.ElementAt(i).Bounds.Y - totalHeight;
-                if (newSize <= 0)
-                    totalHeight += children.ElementAt(i).Bounds.Height + newSize;
-            }
-            return totalHeight;
-        }
+        return totalHeight;
     }
 }

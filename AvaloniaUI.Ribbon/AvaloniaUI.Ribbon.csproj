@@ -15,8 +15,9 @@
     <RepositoryUrl>https://github.com/Splitwirez/AvaloniaRibbon.git</RepositoryUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <AssemblyName>AvaloniaUI.Ribbon</AssemblyName>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>default</LangVersion>
 	<PackageTags>ribbon;avalonia;avaloniaui;avalonia ui;ribbon;ribbonui;ribbon ui;crossplat;crossplatform;cross platform;xplat;xplatform</PackageTags>
+	<Nullable>enable</Nullable>
     <!--owners? requireLicenseAcceptance? releaseNotes? copyright?-->
   </PropertyGroup>
   <ItemGroup>
@@ -29,8 +30,8 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.0" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0" />
+    <PackageReference Include="Avalonia" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.1.3" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.1.3" />
   </ItemGroup>
 </Project>
