@@ -21,13 +21,13 @@ jobs:
       run: dotnet restore
       
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --configuration Release
       
     - name: Pack the project
-      run: dotnet pack --configuration Release --no-restore --output ./nuget
+      run: dotnet pack AvaloniaUI.Ribbon/AvaloniaUI.Ribbon.csproj --configuration Release --no-restore --output AvaloniaUI.Ribbon/bin/Release/nuget
 
     - name: Publish to NuGet
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      run: dotnet nuget push ./nuget/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push AvaloniaUI.Ribbon/bin/Release/nuget/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
       
