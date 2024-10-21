@@ -1,0 +1,158 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
+
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="../Res.xaml" />
+                <ResourceInclude Source="../ColorPalette.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+    <Design.PreviewWith>
+        <Grid Height="800" Width="850" Background="Aqua" ColumnDefinitions="Auto,*" RowDefinitions="Auto, *">
+            <Grid.Resources>
+                <ControlTemplate x:Key="LargeIcon">
+                    <Panel Width="27" Height="27">
+                        <Path Data="M 0.5 0.5 L 26.5 0.5 L 26.5 26.5 L 3.5 26.5 L 0.5 23.5 Z"
+                              Fill="#FFD998DD" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="19"
+                                Height="12" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="11" Height="7" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="MenuIcon">
+                    <Panel Width="16" Height="16">
+                        <Path Data="M 0.5 0.5 L 15.5 0.5 L 15.5 15.5 L 2.5 15.5 L 0.5 13.5 Z"
+                              Fill="#FFD998DD" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10"
+                                Height="6" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="8" Height="5" />
+                    </Panel>
+                </ControlTemplate>
+
+            </Grid.Resources>
+
+            <local:RibbonMenu Icon="{DynamicResource MenuIcon}" Orientation="Horizontal">
+                <local:RibbonMenuTabItem Content="Tab1" Icon="{DynamicResource LargeIcon}">
+                    <local:RibbonMenuTabItem.ControlPane>
+                        <ControlTemplate>
+                            <Grid RowDefinitions="50,50,50,50">
+                                <Rectangle Fill="Azure" />
+                                <Rectangle Grid.Row="1" Fill="Blue" />
+                                <TextBlock Grid.Row="2" Background="Firebrick" Text="{Binding ItemB}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </local:RibbonMenuTabItem.ControlPane>
+                </local:RibbonMenuTabItem>
+                <local:RibbonMenuButtonItem Icon="{DynamicResource LargeIcon}">Test 1</local:RibbonMenuButtonItem>
+                <local:RibbonMenuTabItem Icon="{DynamicResource LargeIcon}">Tab 2</local:RibbonMenuTabItem>
+                <local:RibbonMenuButtonItem Icon="{DynamicResource LargeIcon}">Test 2</local:RibbonMenuButtonItem>
+
+                <local:RibbonMenuButtonItem Icon="{DynamicResource LargeIcon}" Placement="Bottom">Test 3</local:RibbonMenuButtonItem>
+                <local:RibbonMenuButtonItem Icon="{DynamicResource LargeIcon}" Placement="Bottom">Test 4</local:RibbonMenuButtonItem>
+            </local:RibbonMenu>
+        </Grid>
+    </Design.PreviewWith>
+
+
+    <Style Selector="local|RibbonMenu">
+        <Setter Property="Background" Value="{DynamicResource RibbonMenuButtonBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource RibbonMenuButtonForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource RibbonMenuBorderBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource MenuButtonCornerRadius}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_MenuButtonBorder"
+                        Classes="RibbonMenuButtonBackgroundBorder">
+                    <Panel>
+                        <TemplatedControl
+                            Template="{TemplateBinding Icon}"
+                            Width="{StaticResource LargeButtonIconWidth}"
+                            Height="{StaticResource LargeButtonIconHeight}" />
+                        <Popup x:Name="MenuPopup"
+                               PlacementTarget="{Binding #PART_MenuButtonBorder}"
+                               Placement="BottomEdgeAlignedLeft"
+                               VerticalOffset="-1"
+                               HorizontalOffset="-1"
+                               IsLightDismissEnabled="True"
+                               IsOpen="{Binding IsMenuOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                               Width="{Binding PopupSize.Width, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                               MinHeight="{Binding PopupSize.Height, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}">
+                            <Border BorderThickness="1" 
+                                    BorderBrush="{DynamicResource RibbonMenuBorderBrush}">
+                                <DockPanel>
+                                    <DockPanel DockPanel.Dock="Left"
+                                               Background="{DynamicResource RibbonMenuBackground}"
+                                               Width="{TemplateBinding LeftMenuWidth}">
+                                        <ItemsControl DockPanel.Dock="Bottom"
+                                                      HorizontalAlignment="Stretch"
+                                                      VerticalAlignment="Stretch"
+                                                      ItemsSource="{TemplateBinding BottomList}" />
+                                        <ItemsControl HorizontalAlignment="Stretch"
+                                                      VerticalAlignment="Stretch"
+                                                      ItemsSource="{TemplateBinding TopList}" />
+                                    </DockPanel>
+                                    <Panel Background="White">
+                                        <TemplatedControl
+                                            VerticalAlignment="Stretch"
+                                            HorizontalAlignment="Stretch"
+                                            DataContext="{Binding $parent[local:RibbonMenu].CurrentTab.ControlPaneData}"
+                                            Template="{Binding $parent[local:RibbonMenu].CurrentTab.ControlPane}" />
+                                    </Panel>
+                                </DockPanel>
+                            </Border>
+                        </Popup>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+
+        <Style Selector="^ /template/ Border.RibbonMenuButtonBackgroundBorder">
+            <Setter Property="Background" Value="{TemplateBinding Background}" />
+            <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}" />
+            <Setter Property="BorderThickness" Value="{TemplateBinding BorderThickness}" />
+            <Setter Property="Padding" Value="{TemplateBinding Padding}" />
+            <Setter Property="Margin" Value="1,1" />
+            <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius}" />
+        </Style>
+        
+        <Style Selector="^[Orientation=Horizontal]">
+            <Setter Property="Height" Value="{StaticResource MenuButtonSize}" />
+            <Setter Property="Padding" Value="{StaticResource MenuButtonHorizontalPadding}" />
+            <Style Selector="^ /template/ Popup#MenuPopup">
+                <Setter Property="Placement" Value="BottomEdgeAlignedLeft"/>
+            </Style>
+        </Style>
+        <Style Selector="^[Orientation=Vertical]">
+            <Setter Property="Width" Value="{StaticResource MenuButtonSize}" />
+            <Setter Property="Padding" Value="{StaticResource MenuButtonVerticalPadding}" />
+            <Style Selector="^ /template/ Popup#MenuPopup">
+                <Setter Property="Placement" Value="RightEdgeAlignedTop"/>
+            </Style>
+        </Style>
+        
+        <Style Selector="^:pointerover /template/ Border.RibbonMenuButtonBackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource RibbonMenuButtonBackgroundPointerOver}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonMenuButtonBrushPointerOver}" />
+        </Style>
+        <Style Selector="^[IsMenuOpen=True] /template/ Border.RibbonMenuButtonBackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource RibbonMenuButtonBackgroundPressed}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonMenuButtonBrushPressed}" />
+        </Style>
+    </Style>
+    
+</Styles>

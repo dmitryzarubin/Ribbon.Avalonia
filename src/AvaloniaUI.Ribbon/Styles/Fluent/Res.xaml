@@ -1,0 +1,122 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon"
+    xmlns:sys="clr-namespace:System;assembly=netstandard">
+    
+    <ControlTemplate x:Key="CheckableMenuItemControlTemplate" TargetType="{x:Type MenuItem}">
+        <Panel>
+            <Border Name="PART_LayoutRoot"
+                    Padding="{TemplateBinding Padding}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"
+                                          SharedSizeGroup="MenuItemIcon" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto"
+                                          SharedSizeGroup="MenuItemIGT" />
+                        <ColumnDefinition Width="Auto"
+                                          SharedSizeGroup="MenuItemChevron" />
+                    </Grid.ColumnDefinitions>
+                    <Panel Width="16"
+                           Height="16"
+                           Margin="{DynamicResource MenuIconPresenterMargin}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                        <ContentPresenter Name="PART_IconPresenter"
+                                          Content="{TemplateBinding Icon}"
+                                          IsVisible="{Binding !(local:QuickAccessToolbar.IsChecked), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        <Path x:Name="CheckGlyph"
+                              Fill="{TemplateBinding Foreground}"
+                              Data="M1507 31L438 1101L-119 543L-29 453L438 919L1417 -59L1507 31Z"
+                              IsVisible="{Binding (local:QuickAccessToolbar.IsChecked), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                              Width="9"
+                              Stretch="Uniform"
+                              VerticalAlignment="Center" />
+                    </Panel>
+
+                    <ContentPresenter Name="PART_HeaderPresenter"
+                                      Content="{TemplateBinding Header}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Stretch"
+                                      Grid.Column="1">
+                        <ContentPresenter.DataTemplates>
+                            <DataTemplate DataType="sys:String">
+                                <AccessText Text="{Binding}" />
+                            </DataTemplate>
+                        </ContentPresenter.DataTemplates>
+                    </ContentPresenter>
+                    <TextBlock x:Name="PART_InputGestureText"
+                               Grid.Column="2"
+                               Classes="CaptionTextBlockStyle"
+                               Margin="{DynamicResource MenuInputGestureTextMargin}"
+                               Text="{TemplateBinding InputGesture, Converter={StaticResource KeyGestureConverter}}"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center" />
+                    <Path Name="PART_ChevronPath"
+                          Stretch="Uniform"
+                          Width="8"
+                          Height="16"
+                          Data="{StaticResource MenuItemChevronPathData}"
+                          Margin="{DynamicResource MenuFlyoutItemChevronMargin}"
+                          VerticalAlignment="Center"
+                          Grid.Column="3" />
+                </Grid>
+            </Border>
+            <Popup Name="PART_Popup"
+                   WindowManagerAddShadowHint="False"
+                   PlacementMode="Right"
+                   HorizontalOffset="{StaticResource MenuFlyoutSubItemPopupHorizontalOffset}"
+                   IsLightDismissEnabled="True"
+                   IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
+                <Border Background="{DynamicResource MenuFlyoutPresenterBackground}"
+                        BorderBrush="{DynamicResource MenuFlyoutPresenterBorderBrush}"
+                        BorderThickness="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"
+                        Padding="{DynamicResource MenuFlyoutPresenterThemePadding}"
+                        MaxWidth="{DynamicResource FlyoutThemeMaxWidth}"
+                        MinHeight="{DynamicResource MenuFlyoutThemeMinHeight}"
+                        HorizontalAlignment="Stretch"
+                        CornerRadius="{DynamicResource OverlayCornerRadius}">
+                    <ScrollViewer Classes="menuscroller">
+                        <ItemsPresenter Name="PART_ItemsPresenter"
+                                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                                        Margin="{DynamicResource MenuFlyoutScrollerMargin}"
+                                        Grid.IsSharedSizeScope="True" />
+                    </ScrollViewer>
+                </Border>
+            </Popup>
+        </Panel>
+    </ControlTemplate>
+
+    <!-- Ribbon button-->
+    <Thickness x:Key="RibbonButtonBorderThickness">1</Thickness>
+    <CornerRadius x:Key="RibbonButtonCornerRadius">3</CornerRadius>
+    
+    <sys:Double x:Key="LargeButtonMaxWidth">120</sys:Double>
+    <sys:Double x:Key="LargeButtonHeight">72</sys:Double>
+    <sys:Double x:Key="LargeButtonIconWidth">32</sys:Double>
+    <sys:Double x:Key="LargeButtonIconHeight">32</sys:Double>
+    <Thickness x:Key="LargeButtonPadding">9, 4</Thickness>
+
+    <sys:Double x:Key="SmallButtonMaxWidth">250</sys:Double>
+    <sys:Double x:Key="SmallButtonWidth">32</sys:Double>
+    <sys:Double x:Key="SmallButtonHeight">32</sys:Double>
+    <sys:Double x:Key="SmallButtonIconWidth">16</sys:Double>
+    <sys:Double x:Key="SmallButtonIconHeight">16</sys:Double>
+    <Thickness x:Key="SmallButtonPadding">3</Thickness>
+
+
+    
+    <!-- Menu -->
+    <sys:Double x:Key="MenuButtonSize">30</sys:Double>
+    <CornerRadius x:Key="MenuButtonCornerRadius">3</CornerRadius>
+    <sys:Double x:Key="MenuItemIconSize">32</sys:Double>
+    <Thickness x:Key="MenuItemPadding">15, 10</Thickness>
+    <Thickness x:Key="MenuButtonHorizontalPadding">5,0,5,0</Thickness>
+    <Thickness x:Key="MenuButtonVerticalPadding">0,5,0,5</Thickness>
+
+    
+</ResourceDictionary>

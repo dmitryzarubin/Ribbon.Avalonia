@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:ClassModifier="public">
+  <!-- https://docs.microsoft.com/en-us/previous-versions/windows/apps/dn518235(v=win.10)?redirectedfrom=MSDN -->
+  <ResourceDictionary.ThemeDictionaries>
+    <ResourceDictionary x:Key="Default">
+      <!-- Ribbon buttons-->
+      <SolidColorBrush x:Key="RibbonButtonBackground" Color="Transparent"/>
+      <SolidColorBrush x:Key="RibbonButtonBackgroundDisabled" Color="Transparent"/>
+      <StaticResource x:Key="RibbonButtonBackgroundPressed" ResourceKey="ButtonBackgroundDisabled" />
+      <StaticResource x:Key="RibbonButtonBackgroundPointerOver" ResourceKey="ButtonBackgroundPointerOver" />
+      <StaticResource x:Key="RibbonButtonForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+      <StaticResource x:Key="RibbonButtonForegroundDisabled" ResourceKey="TextControlBackgroundDisabled" />
+      <SolidColorBrush x:Key="RibbonButtonBorderBrush" Color="Transparent"/>
+      <StaticResource x:Key="RibbonButtonBorderBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
+      <StaticResource x:Key="RibbonButtonBorderBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
+      
+      <!-- RibbonMenu -->
+      <StaticResource x:Key="RibbonMenuButtonBackground" ResourceKey="SystemAccentColorDark1" />
+      <StaticResource x:Key="RibbonMenuButtonBackgroundPointerOver" ResourceKey="SystemAccentColorLight1" />
+      <StaticResource x:Key="RibbonMenuButtonBackgroundPressed" ResourceKey="SystemAccentColorDark2" />
+      <SolidColorBrush x:Key="RibbonMenuButtonBorderBrush" Color="Transparent"/>
+      <StaticResource x:Key="RibbonMenuButtonBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
+      <StaticResource x:Key="RibbonMenuButtonBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
+      <StaticResource x:Key="RibbonMenuButtonForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+      <StaticResource x:Key="RibbonMenuBackground" ResourceKey="SystemControlBackgroundChromeMediumLowBrush" />
+      <StaticResource x:Key="RibbonMenuForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+      <StaticResource x:Key="RibbonMenuBorderBrush" ResourceKey="SystemControlTransientBorderBrush" />
+      
+    </ResourceDictionary>
+    <ResourceDictionary x:Key="Dark">
+      <!-- Ribbon buttons-->
+      <SolidColorBrush x:Key="RibbonButtonBackground" Color="Transparent"/>
+      <SolidColorBrush x:Key="RibbonButtonBackgroundDisabled" Color="Transparent"/>
+      <StaticResource x:Key="RibbonButtonBackgroundPressed" ResourceKey="ButtonBackgroundDisabled" />
+      <StaticResource x:Key="RibbonButtonBackgroundPointerOver" ResourceKey="ButtonBackgroundPointerOver" />
+      <StaticResource x:Key="RibbonButtonForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+      <StaticResource x:Key="RibbonButtonForegroundDisabled" ResourceKey="TextControlBackgroundDisabled" />
+      <SolidColorBrush x:Key="RibbonButtonBorderBrush" Color="Transparent"/>
+      <StaticResource x:Key="RibbonButtonBorderBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
+      <StaticResource x:Key="RibbonButtonBorderBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
+      
+      <!-- RibbonMenu -->
+      <StaticResource x:Key="RibbonMenuButtonBackground" ResourceKey="SystemAccentColorDark1" />
+      <StaticResource x:Key="RibbonMenuButtonBackgroundPointerOver" ResourceKey="SystemAccentColorLight1" />
+      <StaticResource x:Key="RibbonMenuButtonBackgroundPressed" ResourceKey="SystemAccentColorDark2" />
+      <SolidColorBrush x:Key="RibbonMenuButtonBorderBrush" Color="Transparent"/>
+      <StaticResource x:Key="RibbonMenuButtonBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
+      <StaticResource x:Key="RibbonMenuButtonBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
+      <StaticResource x:Key="RibbonMenuButtonForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+      <StaticResource x:Key="RibbonMenuBackground" ResourceKey="SystemControlBackgroundChromeMediumLowBrush" />
+      <StaticResource x:Key="RibbonMenuForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+      <StaticResource x:Key="RibbonMenuBorderBrush" ResourceKey="SystemControlTransientBorderBrush" />
+      
+    </ResourceDictionary>
+  </ResourceDictionary.ThemeDictionaries>
+
+</ResourceDictionary>
