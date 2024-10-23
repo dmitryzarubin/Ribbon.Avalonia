@@ -1,0 +1,65 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ribbon="clr-namespace:Ribbon.Avalonia;assembly=Ribbon.Avalonia"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Ribbon.Avalonia.Sample.Views.ToolBarWindow"
+        Title="ToolBarWindow">
+    
+    <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Azure">
+        
+        <ribbon:ToolBar DockPanel.Dock="Top" Orientation="Horizontal">
+            <ribbon:ToolBar.Items>
+                <ribbon:RibbonGroupBox Header="Group 1">
+                    <ribbon:RibbonButton MinSize="Medium" MaxSize="Medium" Content="Button">
+                        <ribbon:RibbonButton.Icon>
+                            <ControlTemplate>
+                                <Rectangle Width="16" Height="16" Fill="Red" />
+                            </ControlTemplate>
+                        </ribbon:RibbonButton.Icon>
+                    </ribbon:RibbonButton>
+                    <ribbon:RibbonButton MinSize="Medium" MaxSize="Medium" Content="Button">
+                        <ribbon:RibbonButton.Icon>
+                            <ControlTemplate>
+                                <Rectangle Width="16" Height="16" Fill="Red" />
+                            </ControlTemplate>
+                        </ribbon:RibbonButton.Icon>
+                    </ribbon:RibbonButton>
+                </ribbon:RibbonGroupBox>
+                <ribbon:RibbonGroupBox Header="Group 2">
+                    <ribbon:RibbonButton Size="Large" MinSize="Small" Content="Button">
+                        <ribbon:RibbonButton.LargeIcon>
+                            <ControlTemplate>
+                                <Rectangle Width="32" Height="32" Fill="Red" />
+                            </ControlTemplate>
+                        </ribbon:RibbonButton.LargeIcon>
+                    </ribbon:RibbonButton>
+                    <ribbon:RibbonButton Size="Large" MinSize="Small" MaxSize="Large" Content="Button">
+                        <ribbon:RibbonButton.LargeIcon>
+                            <ControlTemplate>
+                                <Rectangle Width="32" Height="32" Fill="Red" />
+                            </ControlTemplate>
+                        </ribbon:RibbonButton.LargeIcon>
+                    </ribbon:RibbonButton>
+                    <ribbon:RibbonButton MinSize="Small" MaxSize="Medium" Content="Button">
+                        <ribbon:RibbonButton.Icon>
+                            <ControlTemplate>
+                                <Rectangle Width="16" Height="16" Fill="Red" />
+                            </ControlTemplate>
+                        </ribbon:RibbonButton.Icon>
+                    </ribbon:RibbonButton>
+                    <ribbon:RibbonButton MinSize="Small" MaxSize="Medium" Content="Button">
+                        <ribbon:RibbonButton.Icon>
+                            <ControlTemplate>
+                                <Rectangle Width="16" Height="16" Fill="Red" />
+                            </ControlTemplate>
+                        </ribbon:RibbonButton.Icon>
+                    </ribbon:RibbonButton>
+                </ribbon:RibbonGroupBox>
+            </ribbon:ToolBar.Items>
+        </ribbon:ToolBar>
+        
+        <Panel/>
+    </DockPanel>
+</Window>

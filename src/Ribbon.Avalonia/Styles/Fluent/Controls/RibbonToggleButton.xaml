@@ -1,0 +1,264 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Ribbon.Avalonia;assembly=Ribbon.Avalonia">
+
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="../Res.xaml" />
+                <ResourceInclude Source="../ColorPalette.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+    <Design.PreviewWith>
+        <Grid Height="90">
+            <Grid.Resources>
+                <ControlTemplate x:Key="LargeIcon">
+                    <Panel Width="27" Height="27">
+                        <Path Data="M 0.5 0.5 L 26.5 0.5 L 26.5 26.5 L 3.5 26.5 L 0.5 23.5 Z"
+                              Fill="#FFD998DD" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="19"
+                                Height="12" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="11" Height="7" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="LargeToggledIcon">
+                    <Panel Width="27" Height="27">
+                        <Path Data="M 0.5 0.5 L 26.5 0.5 L 26.5 26.5 L 3.5 26.5 L 0.5 23.5 Z"
+                              Fill="Brown" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="19"
+                                Height="12" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="11" Height="7" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="LargeIconDisabled">
+                    <Panel Width="27" Height="27">
+                        <Path Data="M 0.5 0.5 L 26.5 0.5 L 26.5 26.5 L 3.5 26.5 L 0.5 23.5 Z"
+                              Fill="DimGray" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="19"
+                                Height="12" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="11" Height="7" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="Icon">
+                    <Panel Width="16" Height="16">
+                        <Path Data="M 0.5 0.5 L 15.5 0.5 L 15.5 15.5 L 2.5 15.5 L 0.5 13.5 Z"
+                              Fill="#FFD998DD" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10"
+                                Height="6" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="8" Height="5" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="IconToggled">
+                    <Panel Width="16" Height="16">
+                        <Path Data="M 0.5 0.5 L 15.5 0.5 L 15.5 15.5 L 2.5 15.5 L 0.5 13.5 Z"
+                              Fill="Brown" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10"
+                                Height="6" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="8" Height="5" />
+                    </Panel>
+                </ControlTemplate>
+
+                <ControlTemplate x:Key="IconDisabled">
+                    <Panel Width="16" Height="16">
+                        <Path Data="M 0.5 0.5 L 15.5 0.5 L 15.5 15.5 L 2.5 15.5 L 0.5 13.5 Z"
+                              Fill="DimGray" Stroke="#FF563457" StrokeThickness="1" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,0,1,1"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10"
+                                Height="6" />
+                        <Border Background="White" BorderBrush="#7F563457" BorderThickness="1,1,1,0"
+                                Margin="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Width="8" Height="5" />
+                    </Panel>
+                </ControlTemplate>
+            </Grid.Resources>
+
+            <local:RibbonGroupBox Header="Group">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <local:RibbonToggleButton Size="Large" Content="Large Ribbon Toggle Button"
+                                              LargeIcon="{StaticResource LargeIcon}"
+                                              LargeIconDisabled="{StaticResource LargeIconDisabled}"
+                                              LargeToggledIcon="{StaticResource LargeToggledIcon}" />
+                    <local:RibbonToggleButton Size="Large" IsEnabled="False" Content="Large Ribbon Toggle Button"
+                                              LargeIcon="{StaticResource LargeIcon}"
+                                              LargeIconDisabled="{StaticResource LargeIconDisabled}"
+                                              LargeToggledIcon="{StaticResource LargeToggledIcon}" />
+                    <local:RibbonToggleButton Size="Medium" Content="Medium Ribbon Toggle Button"
+                                              Icon="{StaticResource Icon}"
+                                              IconDisabled="{StaticResource IconDisabled}"
+                                              IconToggled="{StaticResource IconToggled}" />
+                    <local:RibbonToggleButton Size="Small" Content="Small Ribbon Toggle Button"
+                                              Icon="{StaticResource Icon}"
+                                              IsEnabled="True"
+                                              IconDisabled="{StaticResource IconDisabled}"
+                                              IconToggled="{StaticResource IconToggled}" />
+                </StackPanel>
+            </local:RibbonGroupBox>
+        </Grid>
+    </Design.PreviewWith>
+
+    <Style Selector="local|RibbonToggleButton">
+        <Setter Property="BorderThickness" Value="{DynamicResource RibbonButtonBorderThickness}" />
+        <Setter Property="Foreground" Value="{DynamicResource RibbonButtonForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource RibbonButtonBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBorderBrush}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource RibbonButtonCornerRadius}" />
+        
+        <Style Selector="^[Size=Large]">
+            <Setter Property="MaxWidth" Value="{StaticResource LargeButtonMaxWidth}" />
+            <Setter Property="Height" Value="{StaticResource LargeButtonHeight}" />
+            <Setter Property="Padding" Value="{StaticResource LargeButtonPadding}" />
+
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Classes="RibbonToggleButtonBackgroundBorder">
+                        <DockPanel VerticalAlignment="Stretch">
+                            <TemplatedControl DockPanel.Dock="Top" 
+                                              Template="{TemplateBinding LargeIcon}" 
+                                              Width="{StaticResource LargeButtonIconWidth}"
+                                              Height="{StaticResource LargeButtonIconHeight}" />
+                            <ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0"
+                                              VerticalAlignment="Stretch" />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style
+                Selector="^[IsEffectivelyEnabled=True][IsChecked=False] /template/ TemplatedControl, 
+                             ^[IsEffectivelyEnabled=True][HasToggledIcon=False]  /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].LargeIcon}" />
+            </Style>
+
+            <Style
+                Selector="^^[IsEffectivelyEnabled=True][HasToggledIcon=True][IsChecked=True] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].LargeToggledIcon}" />
+            </Style>
+
+            <Style Selector="^[IsEffectivelyEnabled=False] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].LargeIconDisabled}" />
+            </Style>
+
+            <Style Selector="^ /template/ ContentPresenter TextBlock">
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="TextAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Size=Medium]">
+            <Setter Property="MaxWidth" Value="{StaticResource SmallButtonMaxWidth}" />
+            <Setter Property="Height" Value="{StaticResource SmallButtonHeight}" />
+            <Setter Property="Padding" Value="{StaticResource SmallButtonPadding}" />
+
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Classes="RibbonToggleButtonBackgroundBorder">
+                        <DockPanel>
+                            <TemplatedControl DockPanel.Dock="Left" 
+                                              Template="{TemplateBinding Icon}"
+                                              Width="{StaticResource SmallButtonIconWidth}"
+                                              Height="{StaticResource SmallButtonIconHeight}" />
+                            <ContentPresenter Content="{TemplateBinding Content}" Margin="3,0,0,0"
+                                              VerticalAlignment="Center" />
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style
+                Selector="^[IsEffectivelyEnabled=True][IsChecked=False] /template/ TemplatedControl, 
+                             ^[IsEffectivelyEnabled=True][HasToggledIcon=False]  /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].Icon}" />
+            </Style>
+
+            <Style
+                Selector="^^[IsEffectivelyEnabled=True][HasToggledIcon=True][IsChecked=True] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].IconToggled}" />
+            </Style>
+
+            <Style Selector="^[IsEffectivelyEnabled=False] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].IconDisabled}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Size=Small]">
+            <Setter Property="Width" Value="{StaticResource SmallButtonWidth}" />
+            <Setter Property="Height" Value="{StaticResource SmallButtonHeight}" />
+            <Setter Property="Padding" Value="{StaticResource SmallButtonPadding}" />
+
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Classes="RibbonToggleButtonBackgroundBorder">
+                        <TemplatedControl Template="{TemplateBinding Icon}"
+                                          Width="{StaticResource SmallButtonIconWidth}"
+                                          Height="{StaticResource SmallButtonIconHeight}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+
+            <Style
+                Selector="^[IsEffectivelyEnabled=True][IsChecked=False] /template/ TemplatedControl, 
+                             ^[IsEffectivelyEnabled=True][HasToggledIcon=False]  /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].Icon}" />
+            </Style>
+
+            <Style
+                Selector="^^[IsEffectivelyEnabled=True][HasToggledIcon=True][IsChecked=True] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].IconToggled}" />
+            </Style>
+
+            <Style Selector="^[IsEffectivelyEnabled=False] /template/ TemplatedControl">
+                <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].IconDisabled}" />
+            </Style>
+        </Style>
+
+
+        <Style Selector="^[IsEffectivelyEnabled=True] /template/ ContentPresenter TextBlock">
+            <Setter Property="Foreground" Value="{Binding $parent[local:RibbonToggleButton].Foreground}" />
+        </Style>
+
+        <Style Selector="^[IsEffectivelyEnabled=False] /template/ ContentPresenter TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource RibbonButtonForegroundDisabled}" />
+        </Style>
+
+        <Style Selector="^ /template/ Border.RibbonToggleButtonBackgroundBorder">
+            <Setter Property="Background" Value="{TemplateBinding Background}" />
+            <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}" />
+            <Setter Property="BorderThickness" Value="{TemplateBinding BorderThickness}" />
+            <Setter Property="Padding" Value="{TemplateBinding Padding}" />
+            <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border.RibbonToggleButtonBackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource RibbonButtonBackgroundPointerOver}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBorderBrushPointerOver}" />
+        </Style>
+        <Style Selector="^[IsChecked=True] /template/ Border.RibbonToggleButtonBackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource RibbonButtonBackgroundPressed}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBorderBrushPressed}" />
+        </Style>
+
+    </Style>
+
+</Styles>
