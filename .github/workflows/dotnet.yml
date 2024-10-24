@@ -18,10 +18,10 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore src/AvaloniaRibbon.sln
       
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build src/AvaloniaRibbon.sln --no-restore --configuration Release
       
     - name: Pack the project
       run: dotnet pack src/Ribbon.Avalonia/Ribbon.Avalonia.csproj --configuration Release --no-restore --output src/Ribbon.Avalonia/bin/Release/nuget
