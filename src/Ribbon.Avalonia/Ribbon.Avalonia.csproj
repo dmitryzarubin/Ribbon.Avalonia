@@ -9,7 +9,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/dmitryzarubin/Ribbon.Avalonia</PackageProjectUrl>
-    <Description>Ribbon UI for Avalonia</Description>
+    <Description>The Ribbon.Avalonia library provides a customizable Ribbon UI component for Avalonia applications, similar to the one found in popular software like Microsoft Word and Excel. This component allows developers to create flexible and user-friendly interfaces that include tabs, groups, and buttons, organized in a streamlined ribbon layout.</Description>
     <RepositoryType>Git</RepositoryType>
     <RepositoryUrl>https://github.com/dmitryzarubin/Ribbon.Avalonia.git</RepositoryUrl>
     <LangVersion>default</LangVersion>
