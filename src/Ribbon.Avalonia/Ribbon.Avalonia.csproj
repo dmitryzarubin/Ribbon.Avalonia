@@ -3,16 +3,16 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Version>0.9.0-rc3</Version>
-    <Authors>Splitwirez, Alban Mazerolles, Rubal Walia</Authors>
+    <Version>0.9.0-rc4</Version>
+    <Authors>Dmitry Zarubin, Splitwirez, Alban Mazerolles, Rubal Walia</Authors>
     <PackageId>Ribbon.Avalonia</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Splitwirez/AvaloniaRibbon</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/dmitryzarubin/Ribbon.Avalonia</PackageProjectUrl>
     <Description>Ribbon UI for Avalonia</Description>
     <RepositoryType>Git</RepositoryType>
-    <RepositoryUrl>https://github.com/Splitwirez/AvaloniaRibbon.git</RepositoryUrl>
-    <PackageLicenseUrl></PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/dmitryzarubin/Ribbon.Avalonia.git</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/dmitryzarubin/Ribbon.Avalonia/blob/master/LICENSE</PackageLicenseUrl>
     <LangVersion>default</LangVersion>
 	<PackageTags>ribbon;avalonia;avaloniaui;avalonia ui;ribbon;ribbonui;ribbon ui;crossplat;crossplatform;cross platform;xplat;xplatform</PackageTags>
 	<Nullable>enable</Nullable>
