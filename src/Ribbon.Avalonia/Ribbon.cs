@@ -40,7 +40,7 @@ public class Ribbon : TabControl, IKeyTipHandler
     public static readonly RoutedEvent<RoutedEventArgs> RibbonKeyTipsOpenedEvent =
         RoutedEvent.Register<MenuBase, RoutedEventArgs>("RibbonKeyTipsOpened", RoutingStrategies.Bubble);
 
-    private ContextMenu _ctxMenu;
+    //private ContextMenu _ctxMenu;
     private ItemsControl _groupsHost;
     private ICommand _helpCommand;
 
@@ -183,7 +183,11 @@ public class Ribbon : TabControl, IKeyTipHandler
     private void RefreshTabs()
     {
         Items.Clear();
-        foreach (var ctrl in Tabs)
+        var tabs = Tabs.AsEnumerable();
+        if (Orientation == Orientation.Vertical)
+            tabs = tabs.Reverse();
+        
+        foreach (var ctrl in tabs)
             switch (ctrl)
             {
                 case RibbonContextualTabGroup ctx:
@@ -193,6 +197,8 @@ public class Ribbon : TabControl, IKeyTipHandler
                     Items.Add(tab);
                     break;
             }
+        
+        SelectedItem = Tabs.FirstOrDefault();
     }
 
     private void ChangeGroupsOrientation(Orientation orientation)
@@ -454,12 +460,11 @@ public class Ribbon : TabControl, IKeyTipHandler
         //         QuickAccessToolbar?.AddItem(_rightClicked);
         // };
 
-        _ctxMenu = e.NameScope.Find<ContextMenu>("PART_ContentAreaContextMenu");
-
-        e.NameScope.Find<MenuItem>("PART_CollapseRibbon").Click += (sneder, args) =>
-        {
-            IsCollapsed = !IsCollapsed;
-        };
+        //_ctxMenu = e.NameScope.Find<ContextMenu>("PART_ContentAreaContextMenu");
+        // e.NameScope.Find<MenuItem>("PART_CollapseRibbon").Click += (sneder, args) =>
+        // {
+        //     IsCollapsed = !IsCollapsed;
+        // };
 
         /*_groupsHost.PointerExited += (sneder, args) =>
         {

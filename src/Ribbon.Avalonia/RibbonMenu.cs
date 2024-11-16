@@ -7,6 +7,7 @@ using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
+using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.ReactiveUI;
 using DynamicData;
@@ -107,6 +108,15 @@ public class RibbonMenu : ItemsControl
                     }
             });
         
+        this.AddHandler(Button.ClickEvent, OnMenuButtonClick, RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
+    }
+
+    private void OnMenuButtonClick(object? sender, RoutedEventArgs e)
+    {
+        if (e.Source is RibbonMenuButtonItem)
+        {
+            IsMenuOpen = false;
+        }
     }
 
     public ReadOnlyObservableCollection<IRibbonMenuItem> TopList => GetValue(TopListProperty);

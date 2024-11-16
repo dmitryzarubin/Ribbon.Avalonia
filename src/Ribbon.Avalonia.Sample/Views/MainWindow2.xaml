@@ -209,29 +209,80 @@
         </Style>
     </Window.Styles>
 
-
+    
     <DockPanel>
-
-
-        <Ribbon DockPanel.Dock="Top" HelpButtonCommand="{Binding HelpCommand}">
+        <Ribbon DockPanel.Dock="Top" HelpButtonCommand="{Binding HelpCommand}" Orientation="Horizontal">
             <Ribbon.Menu>
                 <RibbonMenu Icon="{DynamicResource Icon1}">
-                    <RibbonMenuTabItem Content="Tab1">
+                    <RibbonMenuTabItem Content="Recent" 
+                                       Icon="{DynamicResource Icon1}"
+                                       DataContext="{Binding RecentDocumentList}">
                         <RibbonMenuTabItem.ControlPane>
                             <ControlTemplate>
-                                <Grid RowDefinitions="50,50">
-                                    <Rectangle Fill="Azure"></Rectangle>
-                                    <Rectangle Grid.Row="1" Fill="Brown"></Rectangle>
-                                </Grid>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch"
+                                            HorizontalAlignment="Stretch" Background="{DynamicResource RibbonMenuBackground}">
+
+                                    <TextBlock Text="Recent Documents"
+                                               FontSize="24"
+                                               FontWeight="SemiBold"
+                                               Foreground="{DynamicResource RibbonMenuForeground}"
+                                               Margin="20,20,0,20" />
+                                    
+                                    <ItemsControl Height="400"
+                                                  d:DataContext="{d:DesignInstance Type=viewModels:RecentDocumentListViewModel, IsDesignTimeCreatable=True}"
+                                                  ItemsSource="{Binding RecentDocuments}">
+
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Background="{DynamicResource ComboBoxDropDownBackground}"
+                                                        CornerRadius="8"
+                                                        Margin="5,0,5,10"
+                                                        Padding="10"
+                                                        BoxShadow="0 4 10 #00000088">
+
+                                                    <DockPanel d:DataContext="{d:DesignInstance Type=viewModels:RecentDocumentViewModel, IsDesignTimeCreatable=True}">
+                                                        
+                                                        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Width="170">
+                                                            <TextBlock Text="Opened"
+                                                                       FontSize="14"
+                                                                       Foreground="#BFBFBF"
+                                                                       FontStyle="Italic"
+                                                                       HorizontalAlignment="Stretch" />
+                                                            <TextBlock Text="{Binding LastViewDate}"
+                                                                       FontSize="14"
+                                                                       Foreground="#BFBFBF"
+                                                                       FontStyle="Italic"
+                                                                       HorizontalAlignment="Stretch" />
+                                                        </StackPanel>
+                                                        
+                                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                                                            <TextBlock Text="{Binding Name}"
+                                                                       FontSize="18"
+                                                                       FontWeight="Medium"
+                                                                       Foreground="#4FC3F7" />
+                                                            <TextBlock Text="{Binding Path}"
+                                                                       FontSize="14"
+                                                                       Foreground="#A4A4A4"
+                                                                       TextTrimming="CharacterEllipsis" />
+                                                        </StackPanel>
+
+
+                                                    </DockPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
                             </ControlTemplate>
                         </RibbonMenuTabItem.ControlPane>
                     </RibbonMenuTabItem>
-                    <RibbonMenuButtonItem>Test 1</RibbonMenuButtonItem>
+                    <RibbonMenuButtonItem Command="{Binding OnClickCommand}">Test 1</RibbonMenuButtonItem>
+                    <RibbonMenuSeparatorItem/>
                     <RibbonMenuTabItem>Tab 2</RibbonMenuTabItem>
-                    <RibbonMenuButtonItem>Test 2</RibbonMenuButtonItem>
-          
-                    <RibbonMenuButtonItem Placement="Bottom">Test 3</RibbonMenuButtonItem>
-                    <RibbonMenuButtonItem Placement="Bottom">Test 4</RibbonMenuButtonItem>
+                    <RibbonMenuButtonItem Command="{Binding OnClickCommand}">Test 2</RibbonMenuButtonItem>
+
+                    <RibbonMenuButtonItem Placement="Bottom" Command="{Binding OnClickCommand}">Test 3</RibbonMenuButtonItem>
+                    <RibbonMenuButtonItem Placement="Bottom" Command="{Binding OnExitCommand}">Exit</RibbonMenuButtonItem>
                 </RibbonMenu>
             </Ribbon.Menu>
 
@@ -239,150 +290,151 @@
                 <RibbonTab Header="Home" KeyTip.KeyTipKeys="H">
                     <RibbonTab.Groups>
                         <RibbonGroupBox Header="Test Group 1" Command="{Binding OnClickCommand}"
-                                               KeyTip.KeyTipKeys="D1">
+                                        KeyTip.KeyTipKeys="D1">
                             <RibbonButton x:Name="RibbonButton1" Content="Button 1" MinSize="Medium"
-                                                 ToolTip.Tip="Button 1" KeyTip.KeyTipKeys="A"
-                                                 CanAddToQuickAccess="True" LargeIcon="{DynamicResource Icon1Large}"
-                                                 Icon="{DynamicResource Icon1}"
-                                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
+                                          ToolTip.Tip="Button 1" KeyTip.KeyTipKeys="A"
+                                          CanAddToQuickAccess="True" LargeIcon="{DynamicResource Icon1Large}"
+                                          Icon="{DynamicResource Icon1}"
+                                          QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonButton x:Name="RibbonButton2" Content="Button 2" MinSize="Medium"
-                                                 ToolTip.Tip="Button 2" KeyTip.KeyTipKeys="B"
-                                                 CanAddToQuickAccess="True" LargeIcon="{DynamicResource Icon2Large}"
-                                                 LargeIconDisabled="{DynamicResource Icon2LargeDisabled}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          ToolTip.Tip="Button 2" KeyTip.KeyTipKeys="B"
+                                          CanAddToQuickAccess="True" LargeIcon="{DynamicResource Icon2Large}"
+                                          LargeIconDisabled="{DynamicResource Icon2LargeDisabled}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton x:Name="RibbonButton3" Content="Button 3" MinSize="Medium"
-                                                 ToolTip.Tip="Button 3" KeyTip.KeyTipKeys="C"
-                                                 LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          ToolTip.Tip="Button 3" KeyTip.KeyTipKeys="C"
+                                          LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                         </RibbonGroupBox>
                         <RibbonGroupBox Header="Test Group 2" KeyTip.KeyTipKeys="D2">
                             <RibbonButton MaxSize="Medium" Content="Button 4" ToolTip.Tip="Button 4"
-                                                 KeyTip.KeyTipKeys="D" LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          KeyTip.KeyTipKeys="D" LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton MaxSize="Medium" Content="Button 5" ToolTip.Tip="Button 5"
-                                                 KeyTip.KeyTipKeys="E" LargeIcon="{DynamicResource Icon1Large}"
-                                                 Icon="{DynamicResource Icon1}"
-                                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
+                                          KeyTip.KeyTipKeys="E" LargeIcon="{DynamicResource Icon1Large}"
+                                          Icon="{DynamicResource Icon1}"
+                                          QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonButton MaxSize="Large" MinSize="Small" Content="Button 6"
-                                                 ToolTip.Tip="Button 6" KeyTip.KeyTipKeys="F"
-                                                 LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          ToolTip.Tip="Button 6" KeyTip.KeyTipKeys="F"
+                                          LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton MaxSize="Large" MinSize="Medium" Content="Button 7"
-                                                 ToolTip.Tip="Button 7" KeyTip.KeyTipKeys="G"
-                                                 LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          ToolTip.Tip="Button 7" KeyTip.KeyTipKeys="G"
+                                          LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                         </RibbonGroupBox>
                         <RibbonGroupBox Header="Test Group 3" KeyTip.KeyTipKeys="D3">
                             <RibbonButton MaxSize="Medium" Content="Button 8" ToolTip.Tip="Button 8"
-                                                 KeyTip.KeyTipKeys="H" LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          KeyTip.KeyTipKeys="H" LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton MaxSize="Medium" Content="Button 9" ToolTip.Tip="Button 9"
-                                                 KeyTip.KeyTipKeys="I" LargeIcon="{DynamicResource Icon1Large}"
-                                                 Icon="{DynamicResource Icon1}"
-                                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
+                                          KeyTip.KeyTipKeys="I" LargeIcon="{DynamicResource Icon1Large}"
+                                          Icon="{DynamicResource Icon1}"
+                                          QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonButton MaxSize="Large" MinSize="Small" Content="Button 10"
-                                                 ToolTip.Tip="Button 10" KeyTip.KeyTipKeys="J"
-                                                 LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          ToolTip.Tip="Button 10" KeyTip.KeyTipKeys="J"
+                                          LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                         </RibbonGroupBox>
                         <RibbonGroupBox Header="Test Group 4" Command="{Binding OnClickCommand}"
-                                               KeyTip.KeyTipKeys="D1">
+                                        KeyTip.KeyTipKeys="D1">
                             <RibbonButton Content="Button 11" MinSize="Medium" ToolTip.Tip="Button 11"
-                                                 KeyTip.KeyTipKeys="A" LargeIcon="{DynamicResource Icon1Large}"
-                                                 Icon="{DynamicResource Icon1}"
-                                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
+                                          KeyTip.KeyTipKeys="A" LargeIcon="{DynamicResource Icon1Large}"
+                                          Icon="{DynamicResource Icon1}"
+                                          QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonButton Content="Button 12" MinSize="Medium" ToolTip.Tip="Button 12"
-                                                 KeyTip.KeyTipKeys="B" LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          KeyTip.KeyTipKeys="B" LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton Content="Button 13" MinSize="Medium" ToolTip.Tip="Button 13"
-                                                 KeyTip.KeyTipKeys="C" LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          KeyTip.KeyTipKeys="C" LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                         </RibbonGroupBox>
                         <RibbonGroupBox Header="Test Group 5" KeyTip.KeyTipKeys="D2">
                             <RibbonButton MaxSize="Medium" Content="Button 14" ToolTip.Tip="Button 14"
-                                                 KeyTip.KeyTipKeys="D" LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          KeyTip.KeyTipKeys="D" LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton MaxSize="Medium" Content="Button 15" ToolTip.Tip="Button 15"
-                                                 KeyTip.KeyTipKeys="E" LargeIcon="{DynamicResource Icon1Large}"
-                                                 Icon="{DynamicResource Icon1}"
-                                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
+                                          KeyTip.KeyTipKeys="E" LargeIcon="{DynamicResource Icon1Large}"
+                                          Icon="{DynamicResource Icon1}"
+                                          QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonButton MaxSize="Large" MinSize="Small" Content="Button 16"
-                                                 ToolTip.Tip="Button 16" KeyTip.KeyTipKeys="F"
-                                                 LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          ToolTip.Tip="Button 16" KeyTip.KeyTipKeys="F"
+                                          LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton MaxSize="Large" MinSize="Medium" Content="Button 17"
-                                                 ToolTip.Tip="Button 17" KeyTip.KeyTipKeys="G"
-                                                 LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          ToolTip.Tip="Button 17" KeyTip.KeyTipKeys="G"
+                                          LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                         </RibbonGroupBox>
                         <RibbonGroupBox Header="Test Group 6" KeyTip.KeyTipKeys="D3">
                             <RibbonButton MaxSize="Medium" Content="Button 18" ToolTip.Tip="Button 18"
-                                                 KeyTip.KeyTipKeys="H" LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          KeyTip.KeyTipKeys="H" LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton MaxSize="Medium" Content="Button 19" ToolTip.Tip="Button 19"
-                                                 KeyTip.KeyTipKeys="I" LargeIcon="{DynamicResource Icon1Large}"
-                                                 Icon="{DynamicResource Icon1}"
-                                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
+                                          KeyTip.KeyTipKeys="I" LargeIcon="{DynamicResource Icon1Large}"
+                                          Icon="{DynamicResource Icon1}"
+                                          QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonButton MaxSize="Large" MinSize="Small" Content="Button 20"
-                                                 ToolTip.Tip="Button 20" KeyTip.KeyTipKeys="J"
-                                                 LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          ToolTip.Tip="Button 20" KeyTip.KeyTipKeys="J"
+                                          LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                         </RibbonGroupBox>
                     </RibbonTab.Groups>
                 </RibbonTab>
                 <RibbonTab Header="Button Controls" KeyTip.KeyTipKeys="B">
                     <RibbonTab.Groups>
                         <RibbonGroupBox Header="RibbonButtons" Command="{Binding OnClickCommand}"
-                                               KeyTip.KeyTipKeys="B">
+                                        KeyTip.KeyTipKeys="B">
                             <RibbonButton Content="Large" MinSize="Large" MaxSize="Large"
-                                                 LargeIcon="{DynamicResource Icon1Large}"
-                                                 Icon="{DynamicResource Icon1}"
-                                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
+                                          LargeIcon="{DynamicResource Icon1Large}"
+                                          Icon="{DynamicResource Icon1}"
+                                          QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonButton Content="Medium" MinSize="Medium" MaxSize="Medium"
-                                                 LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton ToolTip.Tip="Small" MinSize="Small" MaxSize="Small"
-                                                 LargeIcon="{DynamicResource Icon2Large}"
-                                                 Icon="{DynamicResource Icon2}"
-                                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                          LargeIcon="{DynamicResource Icon2Large}"
+                                          Icon="{DynamicResource Icon2}"
+                                          QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                         </RibbonGroupBox>
                         <RibbonGroupBox Header="RibbonToggleButtons" Command="{Binding OnClickCommand}"
-                                               KeyTip.KeyTipKeys="T">
+                                        KeyTip.KeyTipKeys="T">
                             <RibbonToggleButton Content="Large" MinSize="Large" MaxSize="Large"
-                                                       LargeIcon="{DynamicResource Icon1Large}"
-                                                       Icon="{DynamicResource Icon1}"
-                                                       QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
+                                                LargeIcon="{DynamicResource Icon1Large}"
+                                                Icon="{DynamicResource Icon1}"
+                                                IsChecked="{Binding IsToggled}"
+                                                QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonToggleButton Content="Medium" MinSize="Medium" MaxSize="Medium"
-                                                       LargeIcon="{DynamicResource Icon2Large}"
-                                                       Icon="{DynamicResource Icon2}"
-                                                       QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                                LargeIcon="{DynamicResource Icon2Large}"
+                                                Icon="{DynamicResource Icon2}"
+                                                QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonToggleButton ToolTip.Tip="Small" MinSize="Small" MaxSize="Small"
-                                                       LargeIcon="{DynamicResource Icon2Large}"
-                                                       Icon="{DynamicResource Icon2}"
-                                                       QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
+                                                LargeIcon="{DynamicResource Icon2Large}"
+                                                Icon="{DynamicResource Icon2}"
+                                                QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                         </RibbonGroupBox>
                         <RibbonGroupBox Header="RibbonDropDownButtons" Command="{Binding OnClickCommand}"
-                                               KeyTip.KeyTipKeys="S">
+                                        KeyTip.KeyTipKeys="S">
                             <RibbonDropDownButton x:Name="LargeRibbonDropDownButton" Content="Large very very"
-                                                         MinSize="Large" MaxSize="Large"
-                                                         LargeIcon="{DynamicResource Icon1Large}"
-                                                         Icon="{DynamicResource Icon1}"
-                                                         QuickAccessIcon="{DynamicResource Icon1QuickAccess}">
+                                                  MinSize="Large" MaxSize="Large"
+                                                  LargeIcon="{DynamicResource Icon1Large}"
+                                                  Icon="{DynamicResource Icon1}"
+                                                  QuickAccessIcon="{DynamicResource Icon1QuickAccess}">
                                 <RibbonDropDownButtonItem Content="Item 1">
                                     <RibbonDropDownButtonItem.Icon>
                                         <ControlTemplate>
@@ -406,22 +458,22 @@
                                 </RibbonDropDownToggleItem>
                             </RibbonDropDownButton>
                             <RibbonDropDownButton Content="Medium" MinSize="Medium" MaxSize="Medium"
-                                                         LargeIcon="{DynamicResource Icon2Large}"
-                                                         Icon="{DynamicResource Icon2}"
-                                                         QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                                         ItemsSource="{Binding #LargeRibbonDropDownButton.ItemsSource}" />
+                                                  LargeIcon="{DynamicResource Icon2Large}"
+                                                  Icon="{DynamicResource Icon2}"
+                                                  QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
+                                                  ItemsSource="{Binding #LargeRibbonDropDownButton.ItemsSource}" />
                             <RibbonDropDownButton ToolTip.Tip="Small" MinSize="Small" MaxSize="Small"
-                                                         LargeIcon="{DynamicResource Icon2Large}"
-                                                         Icon="{DynamicResource Icon2}"
-                                                         QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                                         ItemsSource="{Binding #LargeRibbonDropDownButton.ItemsSource}" />
+                                                  LargeIcon="{DynamicResource Icon2Large}"
+                                                  Icon="{DynamicResource Icon2}"
+                                                  QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
+                                                  ItemsSource="{Binding #LargeRibbonDropDownButton.ItemsSource}" />
                         </RibbonGroupBox>
                         <RibbonGroupBox Header="RibbonSplitButtons" Command="{Binding OnClickCommand}"
-                                               KeyTip.KeyTipKeys="S">
+                                        KeyTip.KeyTipKeys="S">
                             <RibbonSplitButton Content="Large" MinSize="Large" MaxSize="Large"
-                                                      LargeIcon="{DynamicResource Icon1Large}"
-                                                      Icon="{DynamicResource Icon1}"
-                                                      QuickAccessIcon="{DynamicResource Icon1QuickAccess}">
+                                               LargeIcon="{DynamicResource Icon1Large}"
+                                               Icon="{DynamicResource Icon1}"
+                                               QuickAccessIcon="{DynamicResource Icon1QuickAccess}">
                                 <RibbonDropDownButtonItem Content="Item 1">
                                     <RibbonDropDownButtonItem.Icon>
                                         <ControlTemplate>
@@ -429,6 +481,7 @@
                                         </ControlTemplate>
                                     </RibbonDropDownButtonItem.Icon>
                                 </RibbonDropDownButtonItem>
+                                <RibbonDropDownSeparatorItem/>
                                 <RibbonDropDownToggleItem Content="Item 2">
                                     <RibbonDropDownToggleItem.Icon>
                                         <ControlTemplate>
@@ -445,22 +498,22 @@
                                 </RibbonDropDownToggleItem>
                             </RibbonSplitButton>
                             <RibbonSplitButton Content="Medium" MinSize="Medium" MaxSize="Medium"
-                                                      LargeIcon="{DynamicResource Icon2Large}"
-                                                      Icon="{DynamicResource Icon2}"
-                                                      QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                                      ItemsSource="{Binding #LargeRibbonDropDownButton.Items}" />
+                                               LargeIcon="{DynamicResource Icon2Large}"
+                                               Icon="{DynamicResource Icon2}"
+                                               QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
+                                               ItemsSource="{Binding #LargeRibbonDropDownButton.Items}" />
                             <RibbonSplitButton ToolTip.Tip="Small" MinSize="Small" MaxSize="Small"
-                                                      LargeIcon="{DynamicResource Icon2Large}"
-                                                      Icon="{DynamicResource Icon2}"
-                                                      QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                                      ItemsSource="{Binding #LargeRibbonDropDownButton.Items}" />
+                                               LargeIcon="{DynamicResource Icon2Large}"
+                                               Icon="{DynamicResource Icon2}"
+                                               QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
+                                               ItemsSource="{Binding #LargeRibbonDropDownButton.Items}" />
                         </RibbonGroupBox>
                     </RibbonTab.Groups>
                 </RibbonTab>
                 <RibbonTab Header="Galleries" KeyTip.KeyTipKeys="G">
                     <RibbonTab.Groups>
                         <RibbonGroupBox Header="Large gallery" Command="{Binding OnClickCommand}"
-                                               KeyTip.KeyTipKeys="L">
+                                        KeyTip.KeyTipKeys="L">
                             <Gallery>
                                 <GalleryItem Content="Item 1">
                                     <GalleryItem.Icon>
@@ -729,9 +782,9 @@
             </Ribbon.Tabs>
         </Ribbon>
 
-
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10"
-                    Margin="25">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                    Spacing="10" Background="Aqua"
+                    IsVisible="True">
             <ToggleSwitch x:Name="LightsToggleSwitch" IsChecked="True" OnContent="Lights on" OffContent="Lights off" />
             <Button x:Name="HorizontalRibbonButton" Content="Switch Ribbon to horizontal orientation" IsVisible="False" />
             <Button x:Name="VerticalRibbonButton" Content="Switch Ribbon to vertical orientation" />

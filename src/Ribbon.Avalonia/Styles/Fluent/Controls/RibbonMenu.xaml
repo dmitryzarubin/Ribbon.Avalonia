@@ -92,7 +92,10 @@
                                Width="{Binding PopupSize.Width, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
                                MinHeight="{Binding PopupSize.Height, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}">
                             <Border BorderThickness="1" 
-                                    BorderBrush="{DynamicResource RibbonMenuBorderBrush}">
+                                    Background="Transparent"
+                                    BorderBrush="{DynamicResource RibbonMenuBorderBrush}" 
+                                    Margin="0,0,5,5"
+                                    BoxShadow="5 5 10 #40000000">
                                 <DockPanel>
                                     <DockPanel DockPanel.Dock="Left"
                                                Background="{DynamicResource RibbonMenuBackground}"
@@ -109,7 +112,7 @@
                                         <TemplatedControl
                                             VerticalAlignment="Stretch"
                                             HorizontalAlignment="Stretch"
-                                            DataContext="{Binding $parent[local:RibbonMenu].CurrentTab.ControlPaneData}"
+                                            DataContext="{Binding $parent[local:RibbonMenu].CurrentTab.DataContext}"
                                             Template="{Binding $parent[local:RibbonMenu].CurrentTab.ControlPane}" />
                                     </Panel>
                                 </DockPanel>

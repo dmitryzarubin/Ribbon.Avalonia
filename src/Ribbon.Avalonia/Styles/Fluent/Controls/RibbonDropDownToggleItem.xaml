@@ -18,7 +18,8 @@
         <Setter Property="Background" Value="{DynamicResource RibbonButtonBackground}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBorderBrush}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource RibbonButtonCornerRadius}" />
-
+        <Setter Property="Padding" Value="{StaticResource DropDownItemsPadding}" />
+        
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Classes="RibbonToggleButtonBackgroundBorder">
@@ -27,7 +28,7 @@
                                           DockPanel.Dock="Left"
                                           Width="{StaticResource SmallButtonIconWidth}"
                                           Height="{StaticResource SmallButtonIconHeight}" />
-                        <ContentPresenter Content="{TemplateBinding Content}" Margin="3,0,0,0"
+                        <ContentPresenter Content="{TemplateBinding Content}" Margin="5,0"
                                           VerticalAlignment="Center" />
                     </DockPanel>
                 </Border>

@@ -107,6 +107,7 @@
     <sys:Double x:Key="SmallButtonIconWidth">16</sys:Double>
     <sys:Double x:Key="SmallButtonIconHeight">16</sys:Double>
     <Thickness x:Key="SmallButtonPadding">3</Thickness>
+    <Thickness x:Key="DropDownItemsPadding">8</Thickness>
 
 
     

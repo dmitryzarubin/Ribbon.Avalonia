@@ -102,7 +102,7 @@
         <Setter Property="BorderBrush" Value="Transparent" />
 
         <Style Selector="^[Orientation=Horizontal]">
-            <Setter Property="Height" Value="90" />
+            <Setter Property="Height" Value="96" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             
             <Setter Property="Template">

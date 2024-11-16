@@ -400,23 +400,23 @@
         </Style>
         
         <Style Selector="^ /template/ Border.RibbonButtonBackgroundLeftBorder:pointerover">
-            <Setter Property="Background" Value="{DynamicResource RibbonButtonBackgroundPressed}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBorderBrushPressed}" />
+            <Setter Property="Background" Value="{DynamicResource RibbonButtonBackgroundPointerOver}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBackgroundPointerOver}" />
         </Style>
         
         <Style Selector="^ /template/ Border.RibbonButtonBackgroundRightBorder:pointerover">
-            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
+            <Setter Property="Background" Value="{DynamicResource RibbonButtonBackgroundPointerOver}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBackgroundPointerOver}" />
         </Style>
         
         <Style Selector="^[IsButtonPressed=True] /template/ Border.RibbonButtonBackgroundLeftBorder">
-            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
+            <Setter Property="Background" Value="{DynamicResource RibbonButtonBackgroundPressed}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBackgroundPressed}" />
         </Style>
         
         <Style Selector="^[IsMenuPressed=True] /template/ Border.RibbonButtonBackgroundRightBorder">
-            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
+            <Setter Property="Background" Value="{DynamicResource RibbonButtonBackgroundPressed}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBackgroundPressed}" />
         </Style>
     </Style>
 </Styles>
