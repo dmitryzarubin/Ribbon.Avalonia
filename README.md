@@ -32,7 +32,7 @@ To use the `Ribbon.Avalonia` in your Avalonia application, follow these steps:
 
 [![Nuget](https://img.shields.io/nuget/v/Ribbon.Avalonia.svg?style=flat-square)](https://www.nuget.org/packages/Ribbon.Avalonia)
 ```bash
-dotnet add package MyRibbonAvalonia
+dotnet add package Ribbon.Avalonia
 ```
 2. Add the appropriate styles and resources to your application's XAML depending on the theme you're using.
 
