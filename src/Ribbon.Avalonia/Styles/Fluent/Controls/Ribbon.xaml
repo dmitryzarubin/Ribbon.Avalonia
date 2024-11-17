@@ -4,6 +4,13 @@
     xmlns:local="clr-namespace:Ribbon.Avalonia;assembly=Ribbon.Avalonia"
     xmlns:converters="clr-namespace:Ribbon.Avalonia.Converters">
     <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="../Res.xaml" />
+                <ResourceInclude Source="../ColorPalette.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
         <converters:NotConverter x:Key="NotConverter" />
     </Styles.Resources>
 
@@ -35,8 +42,8 @@
     </Design.PreviewWith>
 
     <Style Selector="local|Ribbon">
-        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
+        <Setter Property="Background" Value="{DynamicResource RibbonButton}" />
+        <Setter Property="Foreground" Value="{DynamicResource RibbonForeground}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="ZIndex" Value="10" />
@@ -45,15 +52,17 @@
             <Setter Property="Margin" Value="0,0,0,-8" />
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Border Margin="0, 0, 0, 8" BoxShadow="0 4 10 #40000000">
+                    <Border Margin="0, 0, 0, 8" BoxShadow="{DynamicResource RibbonShadow}">
                         <DockPanel Background="{TemplateBinding Background}">
 
                             <DockPanel Name="HeaderDockPanel" DockPanel.Dock="Top">
                                 <ContentPresenter Name="PART_MenuPresenter" DockPanel.Dock="Left"
-                                                  Content="{TemplateBinding Menu}" />
+                                                  Content="{TemplateBinding Menu}"
+                                                  MinHeight="{StaticResource RibbonTabHeaderHeight}"/>
                                 <Button Classes="RibbonHelpButton RibbonHelpButtonHorizontal"
+                                        DockPanel.Dock="Right" 
                                         Focusable="False"
-                                        Command="{TemplateBinding HelpButtonCommand}" DockPanel.Dock="Right"
+                                        Command="{TemplateBinding HelpButtonCommand}"
                                         ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}">
                                     <TextBlock HorizontalAlignment="Center" TextAlignment="Center"
                                                VerticalAlignment="Center" Text="?"
@@ -83,7 +92,7 @@
                                           ItemsSource="{TemplateBinding SelectedGroups}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="Stretch"
-                                          MinWidth="100" Height="96"
+                                          Height="{StaticResource RibbonTabContentHeight}"
                                           IsVisible="{TemplateBinding IsCollapsed, Converter={StaticResource NotConverter}}"
                                           TextBlock.Foreground="{TemplateBinding Foreground}">
                                 <ItemsControl.ItemsPanel>
@@ -110,12 +119,15 @@
                         <DockPanel Background="{TemplateBinding Background}">
 
                             <DockPanel Name="HeaderDockPanel" DockPanel.Dock="Left">
-                                <ContentPresenter x:Name="PART_MenuPresenter" Content="{TemplateBinding Menu}"
-                                                  DockPanel.Dock="Top" MinHeight="30" />
+                                <ContentPresenter x:Name="PART_MenuPresenter" 
+                                                  Content="{TemplateBinding Menu}"
+                                                  DockPanel.Dock="Top" 
+                                                  MinHeight="{StaticResource RibbonTabHeaderHeight}" />
                                 <Button Classes="RibbonHelpButton RibbonHelpButtonVertical"
-                                        HorizontalAlignment="Stretch"
-                                        Focusable="False" Command="{TemplateBinding HelpButtonCommand}"
                                         DockPanel.Dock="Bottom" 
+                                        Focusable="False" 
+                                        HorizontalAlignment="Stretch"
+                                        Command="{TemplateBinding HelpButtonCommand}"
                                         ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}">
                                     <TextBlock HorizontalAlignment="Center" TextAlignment="Center"
                                                VerticalAlignment="Center" Text="?"
@@ -155,7 +167,7 @@
                                           VerticalAlignment="Stretch"
                                           TextBlock.Foreground="{TemplateBinding Foreground}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          Width="138"
+                                          Width="{StaticResource RibbonTabContentWidth}"
                                           IsVisible="{TemplateBinding IsCollapsed, Converter={StaticResource NotConverter}}">
 
                                 <ItemsControl.ItemsPanel>
@@ -178,57 +190,85 @@
 
 
     <Style Selector="Button.RibbonHelpButton">
-        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltHighBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource SystemControlBackgroundChromeMediumBrush}" />
-        <Setter Property="Margin" Value="3" />
-
-        <Style Selector="^:pointerover:pressed">
-            <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource RibbonToggleButtonBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource RibbonToggleButtonForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource RibbonToggleButtonBorderBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border 
+                    Width="{TemplateBinding Width}" 
+                    Height="{TemplateBinding Height}" 
+                    Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    CornerRadius="{TemplateBinding CornerRadius}" >
+                    <ContentPresenter 
+                        Foreground="{TemplateBinding Foreground}"
+                        Content="{TemplateBinding Content}"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource RibbonToggleButtonBackgroundPointerOver}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonToggleButtonBorderBrushPointerOver}" />
+        </Style>
+        
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource RibbonToggleButtonBackgroundPressed}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonToggleButtonBorderBrushPressed}" />
         </Style>
     </Style>
 
     <Style Selector="Button.RibbonHelpButtonHorizontal">
-        <Setter Property="Padding" Value="12,3" />
+        <Setter Property="Height" Value="23" />
+        <Setter Property="Width" Value="34" />
+        <Setter Property="Margin" Value="3,3,10,3" />
     </Style>
 
     <Style Selector="Button.RibbonHelpButtonVertical">
-        <Setter Property="Padding" Value="3,12" />
+        <Setter Property="Width" Value="23" />
+        <Setter Property="Height" Value="34" />
+        <Setter Property="Margin" Value="3,3,3,10" />
     </Style>
 
 
     <Style Selector="ToggleButton.RibbonToggleButton">
-        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltHighBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource SystemControlBackgroundChromeMediumBrush}" />
+        <Setter Property="Background" Value="{DynamicResource RibbonToggleButtonBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource RibbonToggleButtonForeground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource RibbonToggleButtonBorderBrush}" />
         <Setter Property="Margin" Value="3" />
-
-        <Style
-            Selector="^:not(:pointerover):not(:pressed)">
-            <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltHighBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SystemControlBackgroundChromeMediumBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border 
+                    Width="{TemplateBinding Width}" 
+                    Height="{TemplateBinding Height}" 
+                    Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    CornerRadius="{TemplateBinding CornerRadius}" >
+                    <ContentPresenter 
+                        Foreground="{TemplateBinding Foreground}"
+                        Content="{TemplateBinding Content}"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource RibbonToggleButtonBackgroundPointerOver}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonToggleButtonBorderBrushPointerOver}" />
         </Style>
-        <Style
-            Selector="^:checked">
-            <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltHighBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SystemControlBackgroundChromeMediumBrush}" />
-            <Setter Property="TextBlock.Foreground" Value="{DynamicResource ToggleButtonForeground}" />
+        
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource RibbonToggleButtonBackgroundPressed}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonToggleButtonBorderBrushPressed}" />
         </Style>
-        <Style
-            Selector="^:checked:pointerover">
-            <Setter Property="Background" Value="{DynamicResource ToggleButtonBackgroundPointerOver}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushPointerOver}" />
-            <Setter Property="TextBlock.Foreground" Value="{DynamicResource ToggleButtonForegroundPointerOver}" />
-        </Style>
-        <Style
-            Selector="^:checked:pressed">
-            <Setter Property="Background" Value="{DynamicResource ToggleButtonBackgroundPressed}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ToggleButtonBorderBrushPressed}" />
-            <Setter Property="TextBlock.Foreground" Value="{DynamicResource ToggleButtonForegroundPressed}" />
-        </Style>
+        
     </Style>
 
     <Style Selector="ToggleButton.RibbonToggleButtonHorizontal">
-        <Setter Property="Padding" Value="12,3" />
+        <Setter Property="Height" Value="23" />
+        <Setter Property="Width" Value="34" />
         <Style Selector="^:not(:checked) Path">
             <Setter Property="Data" Value="M 0 5 L 5 0 L 10 5" />
         </Style>
@@ -238,7 +278,8 @@
     </Style>
 
     <Style Selector="ToggleButton.RibbonToggleButtonVertical">
-        <Setter Property="Padding" Value="3,12" />
+        <Setter Property="Width" Value="23" />
+        <Setter Property="Height" Value="34" />
         <Style Selector="^:not(:checked) Path">
             <Setter Property="Data" Value="M 5 0 L 0 5 L 5 10" />
         </Style>

@@ -27,7 +27,19 @@
       <StaticResource x:Key="RibbonMenuForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
       <StaticResource x:Key="RibbonMenuBorderBrush" ResourceKey="SystemControlTransientBorderBrush" />
       
+      <!-- Ribbon -->
+      <StaticResource x:Key="RibbonButton" ResourceKey="SystemControlBackgroundChromeMediumLowBrush" />
+      <StaticResource x:Key="RibbonForeground" ResourceKey="ButtonForeground" />
+      <BoxShadows x:Key="RibbonShadow">0 4 10 #40000000</BoxShadows>
+      <StaticResource x:Key="RibbonToggleButtonBackground" ResourceKey="SystemControlBackgroundAltHighBrush" />
+      <StaticResource x:Key="RibbonToggleButtonBackgroundPressed" ResourceKey="SystemControlBackgroundAltHighBrush" />
+      <StaticResource x:Key="RibbonToggleButtonBackgroundPointerOver" ResourceKey="ButtonBackgroundDisabled" />
+      <StaticResource x:Key="RibbonToggleButtonForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+      <StaticResource x:Key="RibbonToggleButtonBorderBrush" ResourceKey="SystemControlBackgroundAltHighBrush" />
+      <StaticResource x:Key="RibbonToggleButtonBorderBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
+      <StaticResource x:Key="RibbonToggleButtonBorderBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
     </ResourceDictionary>
+    
     <ResourceDictionary x:Key="Dark">
       <!-- Ribbon buttons-->
       <SolidColorBrush x:Key="RibbonButtonBackground" Color="Transparent"/>
@@ -51,6 +63,18 @@
       <StaticResource x:Key="RibbonMenuBackground" ResourceKey="SystemControlBackgroundChromeMediumLowBrush" />
       <StaticResource x:Key="RibbonMenuForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
       <StaticResource x:Key="RibbonMenuBorderBrush" ResourceKey="SystemControlTransientBorderBrush" />
+      
+      <!-- Ribbon -->
+      <StaticResource x:Key="RibbonButton" ResourceKey="SystemControlBackgroundChromeMediumLowBrush" />
+      <StaticResource x:Key="RibbonForeground" ResourceKey="ButtonForeground" />
+      <BoxShadows x:Key="RibbonShadow">0 4 10 #40000000</BoxShadows>
+      <StaticResource x:Key="RibbonToggleButtonBackground" ResourceKey="SystemControlBackgroundAltHighBrush" />
+      <StaticResource x:Key="RibbonToggleButtonBackgroundPressed" ResourceKey="SystemControlBackgroundAltHighBrush" />
+      <StaticResource x:Key="RibbonToggleButtonBackgroundPointerOver" ResourceKey="ButtonBackgroundDisabled" />
+      <StaticResource x:Key="RibbonToggleButtonForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+      <StaticResource x:Key="RibbonToggleButtonBorderBrush" ResourceKey="SystemControlBackgroundAltHighBrush" />
+      <StaticResource x:Key="RibbonToggleButtonBorderBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
+      <StaticResource x:Key="RibbonToggleButtonBorderBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
       
     </ResourceDictionary>
   </ResourceDictionary.ThemeDictionaries>
