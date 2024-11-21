@@ -1,7 +1,5 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    x:ClassModifier="public">
-  <!-- https://docs.microsoft.com/en-us/previous-versions/windows/apps/dn518235(v=win.10)?redirectedfrom=MSDN -->
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ResourceDictionary.ThemeDictionaries>
     <ResourceDictionary x:Key="Default">
       <!-- Ribbon buttons-->
@@ -14,6 +12,15 @@
       <SolidColorBrush x:Key="RibbonButtonBorderBrush" Color="Transparent"/>
       <StaticResource x:Key="RibbonButtonBorderBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
       <StaticResource x:Key="RibbonButtonBorderBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
+      <StaticResource x:Key="RibbonButtonDropDownBackground" ResourceKey="MenuFlyoutPresenterBackground" />
+      <StaticResource x:Key="RibbonButtonDropDownBorderBrush" ResourceKey="MenuFlyoutPresenterBorderBrush" />
+      
+      <!-- Group box -->
+      <StaticResource x:Key="RibbonGroupBoxBorderBrush" ResourceKey="SystemControlForegroundChromeHighBrush" />
+      <StaticResource x:Key="RibbonGroupBoxForeground" ResourceKey="TextControlForeground" />
+      <StaticResource x:Key="RibbonGroupBoxCommandButtonForeground" ResourceKey="SystemControlBackgroundBaseMediumHighBrush" />
+      <StaticResource x:Key="RibbonGroupBoxCommandButtonPointerOverBackground" ResourceKey="ButtonBackgroundPointerOver" />
+      <StaticResource x:Key="RibbonGroupBoxCommandButtonPointerOverBorderBrush" ResourceKey="ButtonBorderBrushPointerOver" />
       
       <!-- RibbonMenu -->
       <StaticResource x:Key="RibbonMenuButtonBackground" ResourceKey="SystemAccentColorDark1" />
@@ -28,7 +35,7 @@
       <StaticResource x:Key="RibbonMenuBorderBrush" ResourceKey="SystemControlTransientBorderBrush" />
       
       <!-- Ribbon -->
-      <StaticResource x:Key="RibbonButton" ResourceKey="SystemControlBackgroundChromeMediumLowBrush" />
+      <StaticResource x:Key="RibbonBackground" ResourceKey="SystemControlBackgroundChromeMediumLowBrush" />
       <StaticResource x:Key="RibbonForeground" ResourceKey="ButtonForeground" />
       <BoxShadows x:Key="RibbonShadow">0 4 10 #40000000</BoxShadows>
       <StaticResource x:Key="RibbonToggleButtonBackground" ResourceKey="SystemControlBackgroundAltHighBrush" />
@@ -38,6 +45,7 @@
       <StaticResource x:Key="RibbonToggleButtonBorderBrush" ResourceKey="SystemControlBackgroundAltHighBrush" />
       <StaticResource x:Key="RibbonToggleButtonBorderBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
       <StaticResource x:Key="RibbonToggleButtonBorderBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
+      <StaticResource x:Key="RibbonTabSelectedBackground" ResourceKey="TabItemHeaderSelectedPipeFill" />
     </ResourceDictionary>
     
     <ResourceDictionary x:Key="Dark">
@@ -52,6 +60,16 @@
       <StaticResource x:Key="RibbonButtonBorderBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
       <StaticResource x:Key="RibbonButtonBorderBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
       
+      <StaticResource x:Key="RibbonButtonDropDownBackground" ResourceKey="MenuFlyoutPresenterBackground" />
+      <StaticResource x:Key="RibbonButtonDropDownBorderBrush" ResourceKey="MenuFlyoutPresenterBorderBrush" />
+      
+      <!-- Group box -->
+      <StaticResource x:Key="RibbonGroupBoxBorderBrush" ResourceKey="SystemControlForegroundChromeHighBrush" />
+      <StaticResource x:Key="RibbonGroupBoxForeground" ResourceKey="TextControlForeground" />
+      <StaticResource x:Key="RibbonGroupBoxCommandButtonForeground" ResourceKey="SystemControlBackgroundBaseMediumHighBrush" />
+      <StaticResource x:Key="RibbonGroupBoxCommandButtonPointerOverBackground" ResourceKey="ButtonBackgroundPointerOver" />
+      <StaticResource x:Key="RibbonGroupBoxCommandButtonPointerOverBorderBrush" ResourceKey="ButtonBorderBrushPointerOver" />
+      
       <!-- RibbonMenu -->
       <StaticResource x:Key="RibbonMenuButtonBackground" ResourceKey="SystemAccentColorDark1" />
       <StaticResource x:Key="RibbonMenuButtonBackgroundPointerOver" ResourceKey="SystemAccentColorLight1" />
@@ -65,7 +83,7 @@
       <StaticResource x:Key="RibbonMenuBorderBrush" ResourceKey="SystemControlTransientBorderBrush" />
       
       <!-- Ribbon -->
-      <StaticResource x:Key="RibbonButton" ResourceKey="SystemControlBackgroundChromeMediumLowBrush" />
+      <StaticResource x:Key="RibbonBackground" ResourceKey="SystemControlBackgroundChromeMediumLowBrush" />
       <StaticResource x:Key="RibbonForeground" ResourceKey="ButtonForeground" />
       <BoxShadows x:Key="RibbonShadow">0 4 10 #40000000</BoxShadows>
       <StaticResource x:Key="RibbonToggleButtonBackground" ResourceKey="SystemControlBackgroundAltHighBrush" />
@@ -75,7 +93,7 @@
       <StaticResource x:Key="RibbonToggleButtonBorderBrush" ResourceKey="SystemControlBackgroundAltHighBrush" />
       <StaticResource x:Key="RibbonToggleButtonBorderBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
       <StaticResource x:Key="RibbonToggleButtonBorderBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
-      
+      <StaticResource x:Key="RibbonTabSelectedBackground" ResourceKey="TabItemHeaderSelectedPipeFill" />
     </ResourceDictionary>
   </ResourceDictionary.ThemeDictionaries>
 

@@ -61,45 +61,52 @@
             </Grid.Resources>
 
             <local:RibbonGroupBox Header="Group" DisplayMode="Large">
-                <local:RibbonButton Size="Large" MinSize="Medium" MaxSize="Large" Content="Open Connection" 
-                                    LargeIcon="{StaticResource LargeIcon}"
-                                    LargeIconDisabled="{StaticResource LargeIconDisabled}"
-                                    Icon="{StaticResource Icon}"
-                                    IconDisabled="{StaticResource IconDisabled}"/>
-                <local:RibbonButton Size="Large" MinSize="Medium" MaxSize="Large" Content="Large" IsEnabled="False" 
+                <local:RibbonButton Size="Large" MinSize="Medium" MaxSize="Large" Content="Open Connection"
                                     LargeIcon="{StaticResource LargeIcon}"
                                     LargeIconDisabled="{StaticResource LargeIconDisabled}"
                                     Icon="{StaticResource Icon}"
                                     IconDisabled="{StaticResource IconDisabled}" />
-                <local:RibbonButton Size="Medium" MinSize="Medium" MaxSize="Medium" Content="Medium Ribbon Button" 
+                <local:RibbonButton Size="Large" MinSize="Medium" MaxSize="Large" Content="Large" IsEnabled="False"
                                     LargeIcon="{StaticResource LargeIcon}"
                                     LargeIconDisabled="{StaticResource LargeIconDisabled}"
                                     Icon="{StaticResource Icon}"
-                                    IconDisabled="{StaticResource IconDisabled}"/>
-                <local:RibbonButton Size="Medium" MinSize="Medium" MaxSize="Medium"  Content="Medium Ribbon Button" 
+                                    IconDisabled="{StaticResource IconDisabled}" />
+                <local:RibbonButton Size="Medium" MinSize="Medium" MaxSize="Medium" Content="Medium Ribbon Button"
                                     LargeIcon="{StaticResource LargeIcon}"
                                     LargeIconDisabled="{StaticResource LargeIconDisabled}"
                                     Icon="{StaticResource Icon}"
-                                    IconDisabled="{StaticResource IconDisabled}"/>
-                <local:RibbonButton Size="Small" MinSize="Small" MaxSize="Small"  Content="Small Ribbon Button" 
+                                    IconDisabled="{StaticResource IconDisabled}" />
+                <local:RibbonButton Size="Medium" MinSize="Medium" MaxSize="Medium" Content="Medium Ribbon Button"
                                     LargeIcon="{StaticResource LargeIcon}"
                                     LargeIconDisabled="{StaticResource LargeIconDisabled}"
                                     Icon="{StaticResource Icon}"
-                                    IconDisabled="{StaticResource IconDisabled}"/>
+                                    IconDisabled="{StaticResource IconDisabled}" />
+                <local:RibbonButton Size="Small" MinSize="Small" MaxSize="Small" Content="Small Ribbon Button"
+                                    LargeIcon="{StaticResource LargeIcon}"
+                                    LargeIconDisabled="{StaticResource LargeIconDisabled}"
+                                    Icon="{StaticResource Icon}"
+                                    IconDisabled="{StaticResource IconDisabled}" />
             </local:RibbonGroupBox>
-            
+
         </Grid>
     </Design.PreviewWith>
 
     <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="../Res.xaml" />
+                <ResourceInclude Source="../ColorPalette.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
         <converters:IsNotNullConverter x:Key="IsNotNullConverter" />
     </Styles.Resources>
 
     <Style Selector="local|RibbonGroupBox">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="{DynamicResource SystemControlForegroundChromeHighBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource RibbonGroupBoxBorderBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource RibbonGroupBoxForeground}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource RibbonGroupBoxBorderThickness}" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Template">
@@ -116,8 +123,9 @@
                                 CommandParameter="{TemplateBinding CommandParameter}"
                                 Focusable="False"
                                 DockPanel.Dock="Right"
-                                Foreground="{DynamicResource SystemControlBackgroundBaseMediumHighBrush}"
-                                Background="Transparent" Padding="0"
+                                Foreground="{DynamicResource RibbonGroupBoxCommandButtonForeground}"
+                                Background="Transparent" 
+                                Padding="0"
                                 IsVisible="{Binding Command, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, Converter={StaticResource IsNotNullConverter}}">
                                 <Border Width="7" Height="7"
                                         BorderBrush="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
@@ -161,29 +169,29 @@
             <Setter Property="VerticalAlignment" Value="Stretch" />
             <Setter Property="Margin" Value="0,4" />
         </Style>
-        
+
         <Style Selector="^ /template/ WrapPanel#PART_ItemsPanel">
             <Setter Property="Orientation" Value="Vertical" />
             <Setter Property="Height" Value="72" />
         </Style>
-        
+
         <Style Selector="^ local|RibbonGroupBox">
             <Setter Property="VerticalAlignment" Value="Stretch" />
         </Style>
     </Style>
-    
+
     <Style Selector="local|RibbonGroupBox[Orientation=Vertical]">
         <Style Selector="^ /template/ Rectangle#Separator">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="Margin" Value="4,0" />
         </Style>
-        
+
         <Style Selector="^ /template/ WrapPanel#PART_ItemsPanel">
             <Setter Property="Orientation" Value="Horizontal" />
             <Setter Property="Width" Value="132" />
         </Style>
-        
+
         <Style Selector="^ local|RibbonGroupBox">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
         </Style>
@@ -200,7 +208,7 @@
         <Setter Property="Width" Value="0" />
     </Style>
     <Style Selector="local|RibbonGroupBox /template/ Button#PART_CommandButton:pointerover">
-        <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
+        <Setter Property="Background" Value="{DynamicResource RibbonGroupBoxCommandButtonPointerOverBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource RibbonGroupBoxCommandButtonPointerOverBorderBrush}" />
     </Style>
 </Styles>

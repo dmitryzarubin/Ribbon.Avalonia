@@ -65,13 +65,12 @@
         </Grid>
     </Design.PreviewWith>
 
-
     <Style Selector="local|RibbonMenu">
         <Setter Property="Background" Value="{DynamicResource RibbonMenuButtonBackground}" />
         <Setter Property="Foreground" Value="{DynamicResource RibbonMenuButtonForeground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource RibbonMenuBorderBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource MenuButtonCornerRadius}" />
-        <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource MenuButtonBorderThickness}" />
         
         <Setter Property="Template">
             <ControlTemplate>

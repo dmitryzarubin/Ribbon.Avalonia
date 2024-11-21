@@ -109,13 +109,20 @@
     <Thickness x:Key="SmallButtonPadding">3</Thickness>
     <Thickness x:Key="DropDownItemsPadding">8</Thickness>
     
+    <StaticResource x:Key="RibbonButtonDropDownBorderThickness" ResourceKey="MenuFlyoutPresenterBorderThemeThickness" />
+    <StaticResource x:Key="RibbonButtonDropDownCornerRadius" ResourceKey="OverlayCornerRadius" />
+    <Thickness x:Key="RibbonButtonDropDownScrollerMargin">0,4,0,4</Thickness>
+    <Thickness x:Key="RibbonGroupBoxBorderThickness">1</Thickness>
+    
     <!-- Menu -->
     <sys:Double x:Key="MenuButtonSize">30</sys:Double>
     <CornerRadius x:Key="MenuButtonCornerRadius">3</CornerRadius>
     <sys:Double x:Key="MenuItemIconSize">32</sys:Double>
+    <CornerRadius x:Key="MenuItemCornerRadius">3</CornerRadius>
     <Thickness x:Key="MenuItemPadding">15, 10</Thickness>
     <Thickness x:Key="MenuButtonHorizontalPadding">5,0,5,0</Thickness>
     <Thickness x:Key="MenuButtonVerticalPadding">0,5,0,5</Thickness>
+    <Thickness x:Key="MenuButtonBorderThickness">1</Thickness>
 
     <!-- Ribbon -->
     <sys:Double x:Key="RibbonTabContentHeight">96</sys:Double>

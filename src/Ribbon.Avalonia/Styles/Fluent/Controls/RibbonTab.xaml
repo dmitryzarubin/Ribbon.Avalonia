@@ -72,21 +72,24 @@
     <Style Selector="local|RibbonTab[IsSelected=False]:not(:pointerover) /template/ Rectangle.textEmphasis">
         <Setter Property="IsVisible" Value="False" />
     </Style>
+    <Style Selector="local|RibbonTab /template/ Border#SelectedBorder">
+        <Setter Property="Background" Value="{DynamicResource RibbonTabSelectedBackground}" />
+    </Style>
+
     <!--Style Selector="local|RibbonTab:not(:selected):not(:pointerover):not(:pressed) /template/ Border#SelectedBorder,
                    local|Ribbon[IsCollapsed=true][IsCollapsedPopupOpen=false] local|RibbonTab:not(:pointerover):not(:pressed) /template/ Border#SelectedBorder">
     <Setter Property="IsVisible" Value="False"/>
     <Setter Property="BorderBrush" Value="Transparent"/>
   </Style-->
-    <Style Selector="local|RibbonTab:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <!--<Style Selector="local|RibbonTab:disabled /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
-    </Style>
-
-    <Style Selector="local|RibbonTab[IsContextual=True] /template/ Border#SelectedBorder">
+    </Style>-->
+    <!--<Style Selector="local|RibbonTab[IsContextual=True] /template/ Border#SelectedBorder">
         <Setter Property="Background" Value="{Binding $parent[local:RibbonContextualTabGroup].Background}" />
-    </Style>
-    <Style Selector="local|RibbonTab[IsContextual=False] /template/ Border#SelectedBorder">
+    </Style>-->
+    <!--<Style Selector="local|RibbonTab[IsContextual=False] /template/ Border#SelectedBorder">
         <Setter Property="Background" Value="{DynamicResource TabItemHeaderSelectedPipeFill}" />
-    </Style>
+    </Style>-->
     <!--Style Selector="local|RibbonTab /template/ Panel#ContentPanel">
     <Setter Property="HorizontalAlignment" Value="Center"/>
     <Setter Property="Margin" Value="10,0"/>

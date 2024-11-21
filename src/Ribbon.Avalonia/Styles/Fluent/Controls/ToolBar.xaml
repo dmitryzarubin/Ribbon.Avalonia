@@ -2,6 +2,16 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Ribbon.Avalonia;assembly=Ribbon.Avalonia">
+
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="../Res.xaml" />
+                <ResourceInclude Source="../ColorPalette.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+
     <Design.PreviewWith>
         <DockPanel Width="400" Height="200">
             <DockPanel.Resources>
@@ -96,72 +106,69 @@
     </Design.PreviewWith>
 
     <Style Selector="local|ToolBar">
-        <Setter Property="FontSize" Value="12.5" />
-        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
+        <Setter Property="Background" Value="{DynamicResource RibbonBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource RibbonForeground}" />
         <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="ZIndex" Value="10" />
 
         <Style Selector="^[Orientation=Horizontal]">
-            <Setter Property="Height" Value="96" />
+            <Setter Property="Margin" Value="0,0,0,-8" />
+            <Setter Property="Height" Value="{StaticResource RibbonTabContentHeight}" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
-            
+
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Panel x:Name="ContentPanel"
-                           Background="{TemplateBinding Background}"
-                           Margin="{TemplateBinding Padding}"
-                           HorizontalAlignment="Stretch"
-                           VerticalAlignment="Stretch">
+                    <Border Margin="0, 0, 0, 8" 
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BoxShadow="{DynamicResource RibbonShadow}">
 
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" BoxShadow="0 4 10 #40000000">
-                            <ItemsPresenter x:Name="PART_ItemsPresenter" HorizontalAlignment="Stretch"
-                                            VerticalAlignment="Stretch">
-                                <ItemsPresenter.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <local:RibbonGroupsStackPanel x:Name="PART_ItemsPanel"
-                                                                      HorizontalAlignment="Left"
-                                                                      VerticalAlignment="Stretch"
-                                                                      Orientation="Horizontal"
-                                                                      Width="{Binding $parent[ItemsPresenter].Bounds.Width}"
-                                                                      Margin="0" />
-                                    </ItemsPanelTemplate>
-                                </ItemsPresenter.ItemsPanel>
-                            </ItemsPresenter>
-                        </Border>
-                    </Panel>
+                        <ItemsPresenter x:Name="PART_ItemsPresenter" HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch">
+                            <ItemsPresenter.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <local:RibbonGroupsStackPanel x:Name="PART_ItemsPanel"
+                                                                  HorizontalAlignment="Left"
+                                                                  VerticalAlignment="Stretch"
+                                                                  Orientation="Horizontal"
+                                                                  Width="{Binding $parent[ItemsPresenter].Bounds.Width}"
+                                                                  Margin="0" />
+                                </ItemsPanelTemplate>
+                            </ItemsPresenter.ItemsPanel>
+                        </ItemsPresenter>
+                    </Border>
                 </ControlTemplate>
             </Setter>
         </Style>
 
         <Style Selector="^[Orientation=Vertical]">
-            <Setter Property="Width" Value="138" />
+            <Setter Property="Margin" Value="0,0,-8,0" />
+            <Setter Property="Width" Value="{StaticResource RibbonTabContentWidth}" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
-            
+
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Panel x:Name="ContentPanel"
-                           Background="{TemplateBinding Background}"
-                           Margin="{TemplateBinding Padding}"
-                           HorizontalAlignment="Stretch"
-                           VerticalAlignment="Stretch">
-
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" BoxShadow="0 4 10 #40000000">
-                            <ItemsPresenter x:Name="PART_ItemsPresenter" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                <ItemsPresenter.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <local:RibbonGroupsStackPanel x:Name="PART_ItemsPanel"
-                                                                      VerticalAlignment="Stretch"
-                                                                      HorizontalAlignment="Stretch"
-                                                                      Orientation="Vertical"
-                                                                      Height="{Binding $parent[ItemsPresenter].Bounds.Height}"
-                                                                      Margin="0" />
-                                    </ItemsPanelTemplate>
-                                </ItemsPresenter.ItemsPanel>
-                            </ItemsPresenter>
-                        </Border>
-                    </Panel>
+                    <Border
+                        Margin="0, 0, 8, 0"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BoxShadow="{DynamicResource RibbonShadow}">
+                        <ItemsPresenter x:Name="PART_ItemsPresenter" HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch">
+                            <ItemsPresenter.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <local:RibbonGroupsStackPanel x:Name="PART_ItemsPanel"
+                                                                  VerticalAlignment="Stretch"
+                                                                  HorizontalAlignment="Stretch"
+                                                                  Orientation="Vertical"
+                                                                  Height="{Binding $parent[ItemsPresenter].Bounds.Height}"
+                                                                  Margin="0" />
+                                </ItemsPanelTemplate>
+                            </ItemsPresenter.ItemsPanel>
+                        </ItemsPresenter>
+                    </Border>
                 </ControlTemplate>
             </Setter>
         </Style>

@@ -170,17 +170,16 @@
                                 IsLightDismissEnabled="True"
                                 PlacementTarget="{Binding #PART_Content}"
                                 HorizontalOffset="-1">
-                                <Border Background="{DynamicResource MenuFlyoutPresenterBackground}"
-                                        BorderBrush="{DynamicResource MenuFlyoutPresenterBorderBrush}"
-                                        BorderThickness="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"
-                                        CornerRadius="{DynamicResource OverlayCornerRadius}"
-                                        TextBlock.FontSize="{DynamicResource ContentControlFontSize}"
-                                        Padding="8,2,8,2">
+                                <Border Background="{DynamicResource RibbonButtonDropDownBackground}"
+                                        BorderBrush="{DynamicResource RibbonButtonDropDownBorderBrush}"
+                                        BorderThickness="{DynamicResource RibbonButtonDropDownBorderThickness}"
+                                        CornerRadius="{DynamicResource RibbonButtonDropDownCornerRadius}"
+                                        Padding="8,2">
                                     <VisualLayerManager>
                                         <ScrollViewer>
                                             <ItemsPresenter
                                                 Name="PART_ItemsPresenter"
-                                                Margin="{DynamicResource MenuFlyoutScrollerMargin}">
+                                                Margin="{DynamicResource RibbonButtonDropDownScrollerMargin}">
                                                 <ItemsPresenter.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Vertical"
@@ -244,17 +243,16 @@
                                 IsLightDismissEnabled="True"
                                 PlacementTarget="{Binding #PART_Content}"
                                 HorizontalOffset="-1">
-                                <Border Background="{DynamicResource MenuFlyoutPresenterBackground}"
-                                        BorderBrush="{DynamicResource MenuFlyoutPresenterBorderBrush}"
-                                        BorderThickness="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"
-                                        CornerRadius="{DynamicResource OverlayCornerRadius}"
-                                        TextBlock.FontSize="{DynamicResource ContentControlFontSize}"
-                                        Padding="8,2,8,2">
+                                <Border Background="{DynamicResource RibbonButtonDropDownBackground}"
+                                        BorderBrush="{DynamicResource RibbonButtonDropDownBorderBrush}"
+                                        BorderThickness="{DynamicResource RibbonButtonDropDownBorderThickness}"
+                                        CornerRadius="{DynamicResource RibbonButtonDropDownCornerRadius}"
+                                        Padding="8,2">
                                     <VisualLayerManager>
                                         <ScrollViewer>
                                             <ItemsPresenter
                                                 Name="PART_ItemsPresenter"
-                                                Margin="{DynamicResource MenuFlyoutScrollerMargin}">
+                                                Margin="{DynamicResource RibbonButtonDropDownScrollerMargin}">
                                                 <ItemsPresenter.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Vertical"
@@ -308,17 +306,16 @@
                                 IsLightDismissEnabled="True"
                                 PlacementTarget="{Binding #PART_Content}"
                                 HorizontalOffset="-1">
-                                <Border Background="{DynamicResource MenuFlyoutPresenterBackground}"
-                                        BorderBrush="{DynamicResource MenuFlyoutPresenterBorderBrush}"
-                                        BorderThickness="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"
-                                        CornerRadius="{DynamicResource OverlayCornerRadius}"
-                                        TextBlock.FontSize="{DynamicResource ContentControlFontSize}"
-                                        Padding="8,2,8,2">
+                                <Border Background="{DynamicResource RibbonButtonDropDownBackground}"
+                                        BorderBrush="{DynamicResource RibbonButtonDropDownBorderBrush}"
+                                        BorderThickness="{DynamicResource RibbonButtonDropDownBorderThickness}"
+                                        CornerRadius="{DynamicResource RibbonButtonDropDownCornerRadius}"
+                                        Padding="8,2">
                                     <VisualLayerManager>
                                         <ScrollViewer>
                                             <ItemsPresenter
                                                 Name="PART_ItemsPresenter"
-                                                Margin="{DynamicResource MenuFlyoutScrollerMargin}">
+                                                Margin="{DynamicResource RibbonButtonDropDownScrollerMargin}">
                                                 <ItemsPresenter.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Vertical"
