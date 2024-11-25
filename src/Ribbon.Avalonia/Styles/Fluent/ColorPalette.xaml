@@ -59,7 +59,6 @@
       <SolidColorBrush x:Key="RibbonButtonBorderBrush" Color="Transparent"/>
       <StaticResource x:Key="RibbonButtonBorderBrushPointerOver" ResourceKey="ButtonBorderBrushPointerOver" />
       <StaticResource x:Key="RibbonButtonBorderBrushPressed" ResourceKey="ButtonBorderBrushDisabled" />
-      
       <StaticResource x:Key="RibbonButtonDropDownBackground" ResourceKey="MenuFlyoutPresenterBackground" />
       <StaticResource x:Key="RibbonButtonDropDownBorderBrush" ResourceKey="MenuFlyoutPresenterBorderBrush" />
       
