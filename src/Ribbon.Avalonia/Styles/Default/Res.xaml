@@ -1,72 +1,43 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Ribbon.Avalonia;assembly=Ribbon.Avalonia"
-    xmlns:col="clr-namespace:System.Collections"
     xmlns:sys="clr-namespace:System;assembly=netstandard">
-    <ControlTemplate x:Key="CheckableMenuItemControlTemplate" TargetType="{x:Type MenuItem}">
-      <Border Name="root"
-              Background="{TemplateBinding Background}"
-              BorderBrush="{TemplateBinding BorderBrush}"
-              BorderThickness="{TemplateBinding BorderThickness}">
-        <Grid>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGT"/>
-            <ColumnDefinition Width="20"/>
-          </Grid.ColumnDefinitions>
-          <ContentPresenter Name="icon"
-                            Content="{TemplateBinding Icon}"
-                            Width="16"
-                            Height="16"
-                            Margin="3"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center" IsVisible="{Binding !(local:QuickAccessToolbar.IsChecked), RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
-          <Path Name="check"
-                Fill="{TemplateBinding Foreground}"
-                Data="F1M10,1.2L4.7,9.1 4.5,9.1 0,5.2 1.3,3.5 4.3,6.1 8.3,0 10,1.2z"
-                IsVisible="{Binding (local:QuickAccessToolbar.IsChecked), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                Margin="3"
-                VerticalAlignment="Center"/>
-          <Rectangle Height="16" Margin="3" IsVisible="{Binding #check.IsVisible}" Opacity="0" IsHitTestVisible="False"/>
-          <ContentPresenter Name="PART_HeaderPresenter"
-                            Content="{TemplateBinding Header}"
-                            Margin="{TemplateBinding Padding}"
-                            VerticalAlignment="Center"
-                            Grid.Column="2">
-            <ContentPresenter.DataTemplates>
-              <DataTemplate DataType="sys:String">
-                <AccessText Text="{Binding}"/>
-              </DataTemplate>
-            </ContentPresenter.DataTemplates>
-          </ContentPresenter>
-          <TextBlock x:Name="PART_InputGestureText"
-                    Grid.Column="3"
-                    Text="{TemplateBinding InputGesture, Converter={StaticResource KeyGestureConverter}}"
-                    VerticalAlignment="Center"/>
-          <Path Name="rightArrow"
-                Data="M0,0L4,3.5 0,7z"
-                Fill="{DynamicResource ThemeForegroundBrush}"
-                Margin="10,0,0,0"
-                VerticalAlignment="Center"
-                Grid.Column="4"/>
-          <Popup Name="PART_Popup"
-                PlacementMode="Right"
-                IsLightDismissEnabled="True"
-                IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
-            <Border Background="{TemplateBinding Background}"
-                    BorderBrush="{DynamicResource ThemeBorderMidBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}">
-              <ScrollViewer Classes="menuscroller">                  
-                  <ItemsPresenter Name="PART_ItemsPresenter"
-                                  ItemsPanel="{TemplateBinding ItemsPanel}"
-                                  Grid.IsSharedSizeScope="True"/>
-              </ScrollViewer>
-            </Border>
-          </Popup>
-          </Grid>
-      </Border>
-    </ControlTemplate>
+
+    <!-- Ribbon button-->
+    <Thickness x:Key="RibbonButtonBorderThickness">1</Thickness>
+    <CornerRadius x:Key="RibbonButtonCornerRadius">0</CornerRadius>
+    
+    <sys:Double x:Key="LargeButtonMaxWidth">120</sys:Double>
+    <sys:Double x:Key="LargeButtonHeight">72</sys:Double>
+    <sys:Double x:Key="LargeButtonIconWidth">32</sys:Double>
+    <sys:Double x:Key="LargeButtonIconHeight">32</sys:Double>
+    <Thickness x:Key="LargeButtonPadding">9, 4</Thickness>
+
+    <sys:Double x:Key="SmallButtonMaxWidth">250</sys:Double>
+    <sys:Double x:Key="SmallButtonWidth">32</sys:Double>
+    <sys:Double x:Key="SmallButtonHeight">32</sys:Double>
+    <sys:Double x:Key="SmallButtonIconWidth">16</sys:Double>
+    <sys:Double x:Key="SmallButtonIconHeight">16</sys:Double>
+    <Thickness x:Key="SmallButtonPadding">3</Thickness>
+    <Thickness x:Key="DropDownItemsPadding">8</Thickness>
+    
+    <Thickness x:Key="RibbonButtonDropDownBorderThickness">1</Thickness>
+    <CornerRadius x:Key="RibbonButtonDropDownCornerRadius">3</CornerRadius>
+    <Thickness x:Key="RibbonButtonDropDownScrollerMargin">0,4,0,4</Thickness>
+    <Thickness x:Key="RibbonGroupBoxBorderThickness">1</Thickness>
+    
+    <!-- Menu -->
+    <sys:Double x:Key="MenuButtonSize">30</sys:Double>
+    <CornerRadius x:Key="MenuButtonCornerRadius">3</CornerRadius>
+    <sys:Double x:Key="MenuItemIconSize">32</sys:Double>
+    <CornerRadius x:Key="MenuItemCornerRadius">3</CornerRadius>
+    <Thickness x:Key="MenuItemPadding">15, 10</Thickness>
+    <Thickness x:Key="MenuButtonHorizontalPadding">5,0,5,0</Thickness>
+    <Thickness x:Key="MenuButtonVerticalPadding">0,5,0,5</Thickness>
+    <Thickness x:Key="MenuButtonBorderThickness">0</Thickness>
+    
+    <!-- Ribbon -->
+    <sys:Double x:Key="RibbonTabContentHeight">96</sys:Double>
+    <sys:Double x:Key="RibbonTabContentWidth">138</sys:Double>
+    <sys:Double x:Key="RibbonTabHeaderHeight">30</sys:Double>
 </ResourceDictionary>

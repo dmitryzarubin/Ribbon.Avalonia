@@ -84,7 +84,7 @@ public class KeyTip
 
     private static void KeyTip_Opened(object sender, EventArgs e)
     {
-        var sned = sender as Popup;
-        sned.Host?.ConfigurePosition(sned.PlacementTarget, sned.PlacementMode, new Point(sned.HorizontalOffset, sned.VerticalOffset));
+        //var sned = sender as Popup;
+        // sned.Host?.ConfigurePosition(sned.PlacementTarget, sned.PlacementMode, new Point(sned.HorizontalOffset, sned.VerticalOffset));
     }
 }

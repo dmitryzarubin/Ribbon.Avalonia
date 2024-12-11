@@ -2,8 +2,8 @@
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="/Styles/Fluent/Res.xaml" />
-                <ResourceInclude Source="/Styles/Fluent/ColorPalette.xaml" />
+                <ResourceInclude Source="/Styles/Default/Res.xaml" />
+                <ResourceInclude Source="/Styles/Default/ColorPalette.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
@@ -12,12 +12,18 @@
     <StyleInclude Source="/Styles/Default/Controls/Ribbon.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonTab.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonMenu.xaml" />
+    <StyleInclude Source="/Styles/Default/Controls/RibbonMenuItems.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonWindow.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonButton.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonSplitButton.xaml" />
+    <StyleInclude Source="/Styles/Default/Controls/RibbonDropDownButton.xaml" />
+    <StyleInclude Source="/Styles/Default/Controls/RibbonDropDownToggleItem.xaml" />
+    <StyleInclude Source="/Styles/Default/Controls/RibbonDropDownButtonItem.xaml" />
+    <StyleInclude Source="/Styles/Default/Controls/RibbonDropDownSeparatorItem.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonToggleButton.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonGroupBox.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/KeyTip.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/RibbonContextualTabGroup.xaml" />
     <StyleInclude Source="/Styles/Default/Controls/QuickAccessToolbar.xaml" />
+    <StyleInclude Source="/Styles/Default/Controls/ToolBar.xaml" />
 </Styles>

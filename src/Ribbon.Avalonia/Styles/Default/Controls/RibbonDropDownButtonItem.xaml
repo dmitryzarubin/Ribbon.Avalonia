@@ -1,0 +1,67 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Ribbon.Avalonia;assembly=Ribbon.Avalonia">
+
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="../Res.xaml" />
+                <ResourceInclude Source="../ColorPalette.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+    <Style Selector="local|RibbonDropDownButtonItem">
+        <Setter Property="BorderThickness" Value="{DynamicResource RibbonButtonBorderThickness}" />
+        <Setter Property="Foreground" Value="{DynamicResource RibbonButtonForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource RibbonButtonBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBorderBrush}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource RibbonButtonCornerRadius}" />
+        <Setter Property="Padding" Value="{StaticResource DropDownItemsPadding}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Classes="RibbonButtonBackgroundBorder">
+                    <DockPanel>
+                        <TemplatedControl DockPanel.Dock="Left"
+                                          Template="{TemplateBinding Icon}"
+                                          Width="{StaticResource SmallButtonIconWidth}"
+                                          Height="{StaticResource SmallButtonIconHeight}" />
+                        <ContentPresenter Content="{TemplateBinding Content}" Margin="5,0"
+                                          VerticalAlignment="Center" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[IsEffectivelyEnabled=True] /template/ TemplatedControl">
+            <Setter Property="Template" Value="{Binding $parent[local:RibbonDropDownButtonItem].Icon}" />
+        </Style>
+
+        <Style Selector="^[IsEffectivelyEnabled=False] /template/ TemplatedControl">
+            <Setter Property="Template" Value="{Binding $parent[local:RibbonDropDownButtonItem].IconDisabled}" />
+        </Style>
+
+        <Style Selector="^[IsEffectivelyEnabled=True] /template/ ContentPresenter TextBlock">
+            <Setter Property="Foreground" Value="{Binding $parent[local:RibbonDropDownButtonItem].Foreground}" />
+        </Style>
+
+        <Style Selector="^[IsEffectivelyEnabled=False] /template/ ContentPresenter TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource RibbonButtonForegroundDisabled}" />
+        </Style>
+
+        <Style Selector="^ /template/ Border.RibbonButtonBackgroundBorder">
+            <Setter Property="Background" Value="{TemplateBinding Background}" />
+            <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}" />
+            <Setter Property="BorderThickness" Value="{TemplateBinding BorderThickness}" />
+            <Setter Property="Padding" Value="{TemplateBinding Padding}" />
+            <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius}" />
+        </Style>
+        <Style Selector="^:pressed /template/ Border.RibbonButtonBackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource RibbonButtonBackgroundPressed}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource RibbonButtonBorderBrushPressed}" />
+        </Style>
+
+    </Style>
+</Styles>

@@ -19,11 +19,11 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.1.4" />
-    <PackageReference Include="Avalonia.Desktop" Version="11.1.4" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="11.1.4" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.1.4" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.4" />
+    <PackageReference Include="Avalonia" Version="11.2.2" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.2.2" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="11.2.2" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.2" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ribbon.Avalonia\Ribbon.Avalonia.csproj" />

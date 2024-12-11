@@ -3,7 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sample="clr-namespace:Ribbon.Avalonia.Sample"
-    RequestedThemeVariant="Dark">
+    RequestedThemeVariant="Light">
     <Application.DataTemplates>
         <sample:ViewLocator />
     </Application.DataTemplates>
@@ -16,8 +16,8 @@
         </ResourceDictionary>
     </Application.Resources>
     <Application.Styles>
-        <FluentTheme />
+        <SimpleTheme />
 
-        <StyleInclude Source="avares://Ribbon.Avalonia/Styles/Fluent/Ribbon.Avalonia.xaml" />
+        <StyleInclude Source="avares://Ribbon.Avalonia/Styles/Default/Ribbon.Avalonia.xaml" />
     </Application.Styles>
 </Application>

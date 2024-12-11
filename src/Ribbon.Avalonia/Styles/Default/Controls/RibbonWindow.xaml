@@ -10,12 +10,18 @@
     <local:DoubleArithmeticConverter x:Key="DoubleArithmeticConverter"/-->
   </Styles.Resources>
   <Style Selector="local|RibbonWindow">
-    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLowBrush}"/>
-    <Setter Property="TitleBarBackground" Value="{DynamicResource ThemeBackgroundBrush}" />
-    <Setter Property="TitleBarForeground" Value="{DynamicResource ThemeForegroundBrush}" />
-    <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
-    <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
-    <Setter Property="FontSize" Value="{DynamicResource FontSizeNormal}"/>
+    <Setter Property="BorderBrush">
+      <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.75"/>
+    </Setter>
+    <Setter Property="TitleBarBackground">
+      <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.75"/>
+    </Setter>
+    <Setter Property="TitleBarForeground" Value="{DynamicResource SystemControlForegroundChromeWhiteBrush}" />
+    <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltHighBrush}"/> 
+    <!--SystemControlBackgroundAltHighBrush-->
+    <Setter Property="TransparencyLevelHint" Value="AcrylicBlur" />
+    <Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}"/>
     <Setter Property="Template">
       <ControlTemplate>
         <Grid>
@@ -30,26 +36,32 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
               </Grid.ColumnDefinitions>
-              <!--Rectangle x:Name="RowDefinitionsHelper" IsHitTestVisible="False" Grid.Row="0" Grid.ColumnSpan="2"/-->
-              <Rectangle x:Name="TitlebarFill" Fill="{TemplateBinding TitleBarBackground}" IsHitTestVisible="False" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
-              <ContentPresenter x:Name="PART_ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Background="{TemplateBinding Background}"/>
+              
+              <Border x:Name="TitlebarFill" Background="{TemplateBinding TitleBarBackground}" IsHitTestVisible="False" Grid.Row="0" Grid.ColumnSpan="2" />
+              <!--<DockPanel>
+                <Rectangle x:Name="HeaderBackgroundRectangle" Fill="{TemplateBinding HeaderBackground}" Height="34" IsHitTestVisible="False" DockPanel.Dock="Top"/>
+                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" BoxShadow="0 4 10 #40000000"/>
+              </DockPanel>-->
+              
+              <ContentPresenter x:Name="PART_ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Background="{TemplateBinding Background}" CornerRadius="0,0,3,3"/>
               <ContentPresenter x:Name="PART_RibbonPresenter" Content="{TemplateBinding Ribbon}"/>
+              
               <Panel x:Name="PART_TitleBar" Grid.Row="0" Grid.ColumnSpan="2" Background="#01000000" VerticalAlignment="Top">
                 <Image Classes="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" Source="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WindowIconToImageConverter}}" MaxWidth="16" MaxHeight="16" Margin="9,0" IsHitTestVisible="False"/>
               </Panel>
-              <ContentPresenter x:Name="PART_QuickAccessToolbarPresenter" Content="{TemplateBinding QuickAccessToolbar}" Grid.Row="0" Grid.ColumnSpan="2" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+              <ContentPresenter x:Name="PART_QuickAccessToolbarPresenter" Content="{TemplateBinding QuickAccessToolbar}" Grid.Row="0" Grid.ColumnSpan="2" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top"/>
               
               <Grid x:Name="CaptionButtons" ColumnDefinitions="*,*,*" Grid.Row="0" Grid.ColumnSpan="2" Width="135" Height="{Binding #PART_TitleBar.Height}" IsVisible="{Binding #PART_TitleBar.IsVisible}" VerticalAlignment="Top">
                   <Button Name="PART_MinimizeButton">
-                    <Rectangle Width="10" Height="2"/>
+                    <Rectangle Width="10" Height="1"/>
                   </Button>
                   <Button Name="PART_MaximizeButton">
                     <Grid>
                       <Rectangle Width="10" Height="10"/>
                       <Grid Width="10" Height="10">
-                        <Border BorderThickness="2" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <Border BorderThickness="1" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                         <Grid Width="7" Height="7" HorizontalAlignment="Right" VerticalAlignment="Top">
-                          <Border BorderThickness="0,2,2,0"/>
+                          <Border BorderThickness="0,1,1,0"/>
                           <Rectangle HorizontalAlignment="Left" VerticalAlignment="Top" Width="2" Height="3"/>
                           <Rectangle HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="3" Height="2"/>
                         </Grid>
@@ -57,7 +69,7 @@
                     </Grid>
                   </Button>
                   <Button x:Name="PART_CloseButton">
-                    <Path Data="M 0 0 L 10 10 M 10 0 L 0 10"/>
+                    <Path Data="M 0 0 L 10 10 M 10 0 L 0 10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                   </Button>
                 </Grid>
             </Grid>
@@ -115,7 +127,7 @@
     <Setter Property="Height" Value="0"/>
   </Style>
   <Style Selector="local|RibbonWindow /template/ Panel#PART_TitleBar">
-    <Setter Property="Height" Value="30"/>
+    <Setter Property="Height" Value="33"/>
   </Style>
 
 
@@ -159,7 +171,7 @@
     <Setter Property="Grid.Column" Value="2"/>
   </Style>
   <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False] /template/ ContentPresenter#PART_QuickAccessToolbarPresenter">
-    <Setter Property="Margin" Value="34,0,0,0"/>
+    <Setter Property="Margin" Value="30,0,0,0"/>
   </Style>
   
   <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Grid#CaptionButtons">
@@ -183,11 +195,12 @@
   
   <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button">
     <Setter Property="Width" Value="45" />
-    <Setter Property="Height" Value="30" />
+    <Setter Property="Height" Value="34" />
     <Setter Property="VerticalAlignment" Value="Top"/>
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="Focusable" Value="False"/>
+    <Setter Property="BorderThickness" Value="0"/>
   </Style>
   <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:not(:pointerover):not(:pressed)">
     <Setter Property="Foreground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RibbonWindow}}"/>
@@ -201,7 +214,7 @@
   </Style>
   <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button > Path">
     <Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-    <Setter Property="StrokeThickness" Value="2"/>
+    <Setter Property="StrokeThickness" Value="1"/>
   </Style>
   <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:not(:pointerover):not(:pressed):disabled">
     <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
@@ -211,7 +224,7 @@
   </Style>
   <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MaximizeButton Rectangle">
     <Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-    <Setter Property="StrokeThickness" Value="2"/>
+    <Setter Property="StrokeThickness" Value="1"/>
   </Style>
   <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MaximizeButton > Grid > Grid Border">
     <Setter Property="BorderBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
@@ -243,11 +256,17 @@
     <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}"/>
     <Setter Property="BorderThickness" Value="1"/>
   </Style>
+  <Style Selector="local|RibbonWindow[WindowState=Normal] /template/ Border.OuterBorder">
+    <Setter Property="CornerRadius" Value="4"/>
+  </Style>
+  <Style Selector="local|RibbonWindow /template/ Border#TitlebarFill">
+    <Setter Property="CornerRadius" Value="3,3,0,0"/>
+  </Style>
   <Style Selector="local|RibbonWindow[WindowState=Maximized] /template/ Border.OuterBorder">
     <Setter Property="BorderThickness" Value="0"/>
   </Style>
   <!--Style Selector="local|RibbonWindow[HasSystemDecorations=False] /template/ Rectangle#RowDefinitionsHelper">
-    <Setter Property="Height" Value="30"/>
+    <Setter Property="Height" Value="34"/>
   </Style>
   <Style Selector="local|RibbonWindow[HasSystemDecorations=True] /template/ Rectangle#RowDefinitionsHelper">
     <Setter Property="Height" Value="0"/>
@@ -271,4 +290,11 @@
   <Style Selector="local|RibbonWindow[IsActive=false] /template/ TextBlock#TitleTextBlock">
     <Setter Property="Opacity" Value="0.5"/>
   </Style>
+  
+  
+  <!--From Ribbon-->
+  <!--<Style Selector="local|RibbonWindow local|Ribbon">
+    <Setter Property="HeaderBackground" Value="{Binding TitleBarBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:RibbonWindow}}}" />
+    <Setter Property="HeaderForeground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:RibbonWindow}}}" />
+  </Style>-->
 </Styles>
