@@ -152,7 +152,7 @@
             </Style>
 
             <Style
-                Selector="^^[IsEffectivelyEnabled=True][HasToggledIcon=True][IsChecked=True] /template/ TemplatedControl">
+                Selector="^[IsEffectivelyEnabled=True][HasToggledIcon=True][IsChecked=True] /template/ TemplatedControl">
                 <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].LargeToggledIcon}" />
             </Style>
 
@@ -194,7 +194,7 @@
             </Style>
 
             <Style
-                Selector="^^[IsEffectivelyEnabled=True][HasToggledIcon=True][IsChecked=True] /template/ TemplatedControl">
+                Selector="^[IsEffectivelyEnabled=True][HasToggledIcon=True][IsChecked=True] /template/ TemplatedControl">
                 <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].IconToggled}" />
             </Style>
 
@@ -225,7 +225,7 @@
             </Style>
 
             <Style
-                Selector="^^[IsEffectivelyEnabled=True][HasToggledIcon=True][IsChecked=True] /template/ TemplatedControl">
+                Selector="^[IsEffectivelyEnabled=True][HasToggledIcon=True][IsChecked=True] /template/ TemplatedControl">
                 <Setter Property="Template" Value="{Binding $parent[local:RibbonToggleButton].IconToggled}" />
             </Style>
 

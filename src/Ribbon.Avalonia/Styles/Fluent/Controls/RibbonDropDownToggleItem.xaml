@@ -41,7 +41,12 @@
         </Style>
 
         <Style
-            Selector="^^[IsEffectivelyEnabled=True][IsChecked=True] /template/ TemplatedControl">
+            Selector="^[IsEffectivelyEnabled=True][IsChecked=True][HasToggledIcon=False] /template/ TemplatedControl">
+            <Setter Property="Template" Value="{Binding $parent[local:RibbonDropDownToggleItem].Icon}" />
+        </Style>
+        
+        <Style
+            Selector="^[IsEffectivelyEnabled=True][IsChecked=True][HasToggledIcon=True] /template/ TemplatedControl">
             <Setter Property="Template" Value="{Binding $parent[local:RibbonDropDownToggleItem].IconToggled}" />
         </Style>
 

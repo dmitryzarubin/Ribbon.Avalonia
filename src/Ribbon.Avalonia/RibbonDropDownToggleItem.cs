@@ -12,6 +12,7 @@ public class RibbonDropDownToggleItem : ToggleButton
     public static readonly StyledProperty<IControlTemplate> IconProperty = RibbonToggleButton.IconProperty.AddOwner<RibbonDropDownToggleItem>();
     public static readonly StyledProperty<IControlTemplate> IconToggledProperty = RibbonToggleButton.IconToggledProperty.AddOwner<RibbonDropDownToggleItem>();
     public static readonly StyledProperty<IControlTemplate> IconDisabledProperty = RibbonToggleButton.IconDisabledProperty.AddOwner<RibbonDropDownToggleItem>();
+    public static readonly StyledProperty<bool> HasToggledIconProperty = AvaloniaProperty.Register<RibbonToggleButton, bool>(nameof(HasToggledIcon));
     
     protected override Type StyleKeyOverride { get; } = typeof(RibbonDropDownToggleItem);
     
@@ -24,7 +25,11 @@ public class RibbonDropDownToggleItem : ToggleButton
     public IControlTemplate IconToggled
     {
         get => GetValue(IconToggledProperty);
-        set => SetValue(IconToggledProperty, value);
+        set
+        {
+            SetValue(IconToggledProperty, value);
+            SetValue(HasToggledIconProperty, value != null);
+        }
     }
 
     public IControlTemplate IconDisabled
@@ -32,6 +37,8 @@ public class RibbonDropDownToggleItem : ToggleButton
         get => GetValue(IconDisabledProperty);
         set => SetValue(IconDisabledProperty, value);
     }
+    
+    public bool HasToggledIcon => GetValue(HasToggledIconProperty);
 
     protected override void OnPointerReleased(PointerReleasedEventArgs e)
     {

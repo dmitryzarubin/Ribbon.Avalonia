@@ -16,8 +16,8 @@
         </ResourceDictionary>
     </Application.Resources>
     <Application.Styles>
-        <SimpleTheme />
+        <FluentTheme />
 
-        <StyleInclude Source="avares://Ribbon.Avalonia/Styles/Default/Ribbon.Avalonia.xaml" />
+        <StyleInclude Source="avares://Ribbon.Avalonia/Styles/Fluent/Ribbon.Avalonia.xaml" />
     </Application.Styles>
 </Application>
