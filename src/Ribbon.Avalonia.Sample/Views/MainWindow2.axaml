@@ -211,7 +211,7 @@
 
     
     <DockPanel>
-        <Ribbon DockPanel.Dock="Top" HelpButtonCommand="{Binding HelpCommand}" Orientation="Horizontal">
+        <Ribbon Name="Ribbon1" DockPanel.Dock="Top" HelpButtonCommand="{Binding HelpCommand}" Orientation="Horizontal">
             <Ribbon.Menu>
                 <RibbonMenu Icon="{DynamicResource Icon1}">
                     <RibbonMenuTabItem Content="Recent" 

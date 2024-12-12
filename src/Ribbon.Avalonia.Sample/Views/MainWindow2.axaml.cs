@@ -1,13 +1,10 @@
 ﻿using System;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Layout;
-using Avalonia.Markup.Xaml;
 
 namespace Ribbon.Avalonia.Sample.Views
 {
-    public class MainWindow2 : Window
+    public partial class MainWindow2 : Window
     {
         public MainWindow2()
         {
@@ -40,14 +37,14 @@ namespace Ribbon.Avalonia.Sample.Views
             // lightsToggleSwitch.Unchecked += (sneder, e) => RefreshLights(FluentThemeMode.Dark);
         }
 
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
-            
-#if DEBUG
-            this.AttachDevTools();
-#endif
-        }
+//         private void InitializeComponent()
+//         {
+//             AvaloniaXamlLoader.Load(this);
+//             
+// #if DEBUG
+//             this.AttachDevTools();
+// #endif
+//         }
         
         Uri _baseUri = new("avares://Ribbon.Avalonia.Samples/Styles");
         
