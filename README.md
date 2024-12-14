@@ -55,6 +55,6 @@ After completing these steps, the Ribbon control will be integrated into your ap
 
 
 
-![Fluent-Light theme preview](/ReadmeImages/Light.png)
-![Fluent-Dark theme preview](/ReadmeImages/Dark.png)
+![Fluent-Light theme preview](/docs/ReadmeImages/Light.png)
+![Fluent-Dark theme preview](/docs/ReadmeImages/Dark.png)
 
