@@ -2,6 +2,11 @@
 
 The `Ribbon` component for Avalonia is a UI control designed to provide users with a familiar tab-based navigation experience, similar to the Ribbon found in popular applications like Microsoft Word or Excel. It is composed of **tabs**, **groups**, and **buttons** to organize various commands and actions in a clear, hierarchical structure.
 
+### Light theme
+![Fluent-Light theme preview](/docs/ReadmeImages/Light.png)
+### Dark theme
+![Fluent-Dark theme preview](/docs/ReadmeImages/Dark.png)
+
 ### Active Development
 
 This version of the `Ribbon.Avalonia` is actively under development, and its public API is subject to change. Developers using this component should be aware that future updates may introduce breaking changes or improvements as the library evolves.
@@ -52,9 +57,3 @@ For Default Theme:
 ```
 
 After completing these steps, the Ribbon control will be integrated into your application, and you'll be able to use it with the selected theme and localization support.
-
-
-
-![Fluent-Light theme preview](/docs/ReadmeImages/Light.png)
-![Fluent-Dark theme preview](/docs/ReadmeImages/Dark.png)
-
