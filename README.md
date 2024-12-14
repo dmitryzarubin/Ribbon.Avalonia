@@ -55,12 +55,6 @@ After completing these steps, the Ribbon control will be integrated into your ap
 
 
 
+![Fluent-Light theme preview](/ReadmeImages/Light.png)
+![Fluent-Dark theme preview](/ReadmeImages/Dark.png)
 
-
-
-
-![Fluent-Light theme preview, horizontal orientation](/ReadmeImages/Ribbon-FluentLight-Horizontal.png)
-![Fluent-Dark theme preview, horizontal orientation](/ReadmeImages/Ribbon-FluentDark-Horizontal.png)
-
-![Fluent-Light theme preview, vertical orientation](/ReadmeImages/Ribbon-FluentLight-Vertical.png)
-![Fluent-Dark theme preview, vertical orientation](/ReadmeImages/Ribbon-FluentDark-Vertical.png)

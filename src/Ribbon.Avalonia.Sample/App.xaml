@@ -3,7 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sample="clr-namespace:Ribbon.Avalonia.Sample"
-    RequestedThemeVariant="Light">
+    RequestedThemeVariant="Dark">
     <Application.DataTemplates>
         <sample:ViewLocator />
     </Application.DataTemplates>

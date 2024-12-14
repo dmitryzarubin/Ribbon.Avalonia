@@ -783,7 +783,7 @@
         </Ribbon>
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                    Spacing="10" Background="Aqua"
+                    Spacing="10" 
                     IsVisible="True">
             <ToggleSwitch x:Name="LightsToggleSwitch" IsChecked="True" OnContent="Lights on" OffContent="Lights off" />
             <Button x:Name="HorizontalRibbonButton" Content="Switch Ribbon to horizontal orientation" IsVisible="False" />
