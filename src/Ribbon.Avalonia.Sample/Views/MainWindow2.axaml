@@ -461,19 +461,7 @@
                                                   LargeIcon="{DynamicResource Icon2Large}"
                                                   Icon="{DynamicResource Icon2}"
                                                   QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                                  ItemsSource="{Binding #LargeRibbonDropDownButton.ItemsSource}" />
-                            <RibbonDropDownButton ToolTip.Tip="Small" MinSize="Small" MaxSize="Small"
-                                                  LargeIcon="{DynamicResource Icon2Large}"
-                                                  Icon="{DynamicResource Icon2}"
-                                                  QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                                  ItemsSource="{Binding #LargeRibbonDropDownButton.ItemsSource}" />
-                        </RibbonGroupBox>
-                        <RibbonGroupBox Header="RibbonSplitButtons" Command="{Binding OnClickCommand}"
-                                        KeyTip.KeyTipKeys="S">
-                            <RibbonSplitButton Content="Large" MinSize="Large" MaxSize="Large"
-                                               LargeIcon="{DynamicResource Icon1Large}"
-                                               Icon="{DynamicResource Icon1}"
-                                               QuickAccessIcon="{DynamicResource Icon1QuickAccess}">
+                                                  ItemsSource="{Binding #LargeRibbonDropDownButton.ItemsSource}">
                                 <RibbonDropDownButtonItem Content="Item 1">
                                     <RibbonDropDownButtonItem.Icon>
                                         <ControlTemplate>
@@ -481,7 +469,6 @@
                                         </ControlTemplate>
                                     </RibbonDropDownButtonItem.Icon>
                                 </RibbonDropDownButtonItem>
-                                <RibbonDropDownSeparatorItem/>
                                 <RibbonDropDownToggleItem Content="Item 2">
                                     <RibbonDropDownToggleItem.Icon>
                                         <ControlTemplate>
@@ -496,17 +483,118 @@
                                         </ControlTemplate>
                                     </RibbonDropDownToggleItem.Icon>
                                 </RibbonDropDownToggleItem>
+                            </RibbonDropDownButton>
+                            <RibbonDropDownButton ToolTip.Tip="Small" MinSize="Small" MaxSize="Small"
+                                                  LargeIcon="{DynamicResource Icon2Large}"
+                                                  Icon="{DynamicResource Icon2}"
+                                                  QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
+                                                  ItemsSource="{Binding #LargeRibbonDropDownButton.ItemsSource}">
+                                <RibbonDropDownButtonItem Content="Item 1">
+                                    <RibbonDropDownButtonItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Blue" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownButtonItem.Icon>
+                                </RibbonDropDownButtonItem>
+                                <RibbonDropDownToggleItem Content="Item 2">
+                                    <RibbonDropDownToggleItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Red" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownToggleItem.Icon>
+                                </RibbonDropDownToggleItem>
+                                <RibbonDropDownToggleItem Content="Item 3">
+                                    <RibbonDropDownToggleItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Green" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownToggleItem.Icon>
+                                </RibbonDropDownToggleItem>
+                            </RibbonDropDownButton>
+                        </RibbonGroupBox>
+                        <RibbonGroupBox Header="RibbonSplitButtons" Command="{Binding OnClickCommand}"
+                                        KeyTip.KeyTipKeys="S">
+                            <RibbonSplitButton Content="Large" MinSize="Large" MaxSize="Large"
+                                               LargeIcon="{DynamicResource Icon1Large}"
+                                               Icon="{DynamicResource Icon1}"
+                                               QuickAccessIcon="{DynamicResource Icon1QuickAccess}">
+                                <RibbonDropDownButtonItem Content="Item 11">
+                                    <RibbonDropDownButtonItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Blue" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownButtonItem.Icon>
+                                </RibbonDropDownButtonItem>
+                                <RibbonDropDownSeparatorItem/>
+                                <RibbonDropDownToggleItem Content="Item 12">
+                                    <RibbonDropDownToggleItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Red" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownToggleItem.Icon>
+                                </RibbonDropDownToggleItem>
+                                <RibbonDropDownToggleItem Content="Item 13">
+                                    <RibbonDropDownToggleItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Green" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownToggleItem.Icon>
+                                </RibbonDropDownToggleItem>
                             </RibbonSplitButton>
                             <RibbonSplitButton Content="Medium" MinSize="Medium" MaxSize="Medium"
                                                LargeIcon="{DynamicResource Icon2Large}"
                                                Icon="{DynamicResource Icon2}"
-                                               QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                               ItemsSource="{Binding #LargeRibbonDropDownButton.Items}" />
+                                               QuickAccessIcon="{DynamicResource Icon2QuickAccess}">
+                                <RibbonDropDownButtonItem Content="Item 21">
+                                    <RibbonDropDownButtonItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Blue" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownButtonItem.Icon>
+                                </RibbonDropDownButtonItem>
+                                <RibbonDropDownSeparatorItem/>
+                                <RibbonDropDownToggleItem Content="Item 22">
+                                    <RibbonDropDownToggleItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Red" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownToggleItem.Icon>
+                                </RibbonDropDownToggleItem>
+                                <RibbonDropDownToggleItem Content="Item 23">
+                                    <RibbonDropDownToggleItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Green" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownToggleItem.Icon>
+                                </RibbonDropDownToggleItem>
+                            </RibbonSplitButton>
                             <RibbonSplitButton ToolTip.Tip="Small" MinSize="Small" MaxSize="Small"
                                                LargeIcon="{DynamicResource Icon2Large}"
                                                Icon="{DynamicResource Icon2}"
-                                               QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                               ItemsSource="{Binding #LargeRibbonDropDownButton.Items}" />
+                                               QuickAccessIcon="{DynamicResource Icon2QuickAccess}">
+                                <RibbonDropDownButtonItem Content="Item 31">
+                                    <RibbonDropDownButtonItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Blue" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownButtonItem.Icon>
+                                </RibbonDropDownButtonItem>
+                                <RibbonDropDownSeparatorItem/>
+                                <RibbonDropDownToggleItem Content="Item 32">
+                                    <RibbonDropDownToggleItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Red" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownToggleItem.Icon>
+                                </RibbonDropDownToggleItem>
+                                <RibbonDropDownToggleItem Content="Item 33">
+                                    <RibbonDropDownToggleItem.Icon>
+                                        <ControlTemplate>
+                                            <Rectangle Width="16" Height="16" Fill="Green" />
+                                        </ControlTemplate>
+                                    </RibbonDropDownToggleItem.Icon>
+                                </RibbonDropDownToggleItem>
+                            </RibbonSplitButton>
                         </RibbonGroupBox>
                     </RibbonTab.Groups>
                 </RibbonTab>
